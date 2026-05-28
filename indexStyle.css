@@ -1,0 +1,239 @@
+/* ===== 个人简介卡片 ===== */
+.profile-section {
+    display: flex;
+    gap: 48px;
+    margin-bottom: 48px;
+    padding: 40px;
+    background: #f5f5f7;
+    border-radius: 18px;
+}
+
+.profile-avatar {
+    width: 160px;
+    height: 160px;
+    border-radius: 9999px;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 3px solid #fff;
+    box-shadow: rgba(0, 0, 0, 0.22) 3px 5px 30px 0;
+}
+
+.profile-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.profile-name {
+    font-size: 40px;
+    font-weight: 600;
+    letter-spacing: -0.374px;
+    line-height: 1.1;
+    margin: 0 0 8px 0;
+    color: #1d1d1f;
+}
+
+.profile-bio {
+    font-size: 21px;
+    font-weight: 600;
+    letter-spacing: 0.231px;
+    line-height: 1.19;
+    color: #1d1d1f;
+    margin: 0 0 16px 0;
+}
+
+.profile-desc {
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.47;
+    color: #333;
+    margin: 0 0 20px 0;
+}
+
+.profile-links {
+    display: flex;
+    gap: 12px;
+}
+
+.profile-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: #0066cc;
+    color: #fff;
+    border-radius: 9999px;
+    font-size: 14px;
+    font-weight: 400;
+    transition: all 0.2s;
+}
+
+.profile-links a:hover {
+    background: #0071e3;
+    text-decoration: none;
+    transform: scale(0.95);
+}
+
+.profile-links a.secondary {
+    background: transparent;
+    color: #0066cc;
+    border: 1px solid #0066cc;
+}
+
+.profile-links a.secondary:hover {
+    background: #f0f0f0;
+}
+
+/* ===== 主布局（文章列表 + 侧边栏） ===== */
+.main-layout {
+    display: flex;
+    gap: 32px;
+}
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+}
+
+/* ===== 侧边栏 ===== */
+.sidebar {
+    width: 280px;
+    flex-shrink: 0;
+}
+
+.sidebar-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 18px;
+    padding: 24px;
+    margin-bottom: 20px;
+}
+
+.sidebar-card h3 {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.224px;
+    color: #1d1d1f;
+    margin: 0 0 16px 0;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.sidebar-card p {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.43;
+    margin: 0 0 8px 0;
+}
+
+.sidebar-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.sidebar-skills span {
+    padding: 6px 14px;
+    background: #f5f5f7;
+    border-radius: 9999px;
+    font-size: 12px;
+    color: #333;
+    font-weight: 400;
+}
+
+.sidebar-links a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 0;
+    color: #0066cc;
+    font-size: 14px;
+    border-bottom: 1px solid #f0f0f0;
+    transition: color 0.2s;
+}
+
+.sidebar-links a:last-child {
+    border-bottom: none;
+}
+
+.sidebar-links a:hover {
+    color: #0071e3;
+    text-decoration: none;
+}
+
+.section-title {
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 1.14;
+    margin: 0 0 24px 0;
+    color: #1d1d1f;
+}
+
+/* ===== 响应式 ===== */
+@media (max-width: 900px) {
+    .main-layout {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+    }
+
+    .profile-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 24px;
+        padding: 32px 24px;
+    }
+
+    .profile-avatar {
+        width: 120px;
+        height: 120px;
+    }
+
+    .profile-name {
+        font-size: 34px;
+    }
+
+    .profile-bio {
+        font-size: 18px;
+    }
+
+    .profile-links {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 16px;
+    }
+
+    .profile-section {
+        padding: 24px 16px;
+    }
+
+    .profile-avatar {
+        width: 96px;
+        height: 96px;
+    }
+
+    .profile-name {
+        font-size: 28px;
+    }
+
+    .profile-bio {
+        font-size: 17px;
+    }
+
+    .profile-desc {
+        font-size: 15px;
+    }
+
+    .sidebar-card {
+        padding: 16px;
+    }
+}
