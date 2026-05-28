@@ -52,6 +52,11 @@ def main():
 
     print("正在生成 config.json...")
 
+    # Gmeek需要在CSS外包裹<style>标签，JS外包裹<script>标签
+    style_tag = f"<style>{style}</style>"
+    index_style_tag = f"<style>{index_style}</style>"
+    index_script_tag = f"<script>{index_script}</script>"
+
     config = {
         "title": "tpTwof's Blog",
         "subTitle": "Thoughts on code, design, and life",
@@ -72,9 +77,9 @@ def main():
         "rssSplit": "sentence",
         "bottomText": "",
         "head": "<link href='https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap' rel='stylesheet'>",
-        "style": style,
-        "indexStyle": index_style,
-        "indexScript": index_script,
+        "style": style_tag,
+        "indexStyle": index_style_tag,
+        "indexScript": index_script_tag,
         "iconList": {},
         "exlink": {},
         "singlePage": [],
