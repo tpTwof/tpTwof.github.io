@@ -71,6 +71,10 @@ document.addEventListener('DOMContentLoaded', function () {
             '<div class="form-group"><label class="form-label">Message</label><textarea class="form-textarea" placeholder="Your message..."></textarea></div>' +
             '<button type="submit" class="submit-btn">Send Message</button>' +
             '</div></section>' +
+            '<section id="post-detail-section" class="content-section" style="display:none">' +
+            '<button class="back-btn" id="back-btn">&larr; Back</button>' +
+            '<div id="post-detail-content" class="post-detail-content"></div>' +
+            '</section>' +
             '</div>';
 
         layoutWrapper.appendChild(leftSidebar);
@@ -85,8 +89,9 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!document.querySelector('.layout-wrapper')) return;
 
     // ═══════════════════════════════════════════
-    // Page metadata per nav section
+    // Page state
     // ═══════════════════════════════════════════
+    var currentPage = 'about';
     var pageMeta = {
         'about': {
             title: 'About Me',
@@ -107,22 +112,27 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     // ═══════════════════════════════════════════
-    // Navigation switching
+    // DOM refs
     // ═══════════════════════════════════════════
     var navItems = document.querySelectorAll('.nav-item');
     var sections = document.querySelectorAll('.content-section');
     var pageTitle = document.querySelector('.page-title');
     var pageIntro = document.querySelector('.page-intro');
+    var detailSection = document.getElementById('post-detail-section');
+    var detailContent = document.getElementById('post-detail-content');
 
+    // ═══════════════════════════════════════════
+    // Navigation switching
+    // ═══════════════════════════════════════════
     function switchToPage(page) {
+        currentPage = page;
         navItems.forEach(function (n) { n.classList.remove('active'); });
         var activeNav = document.querySelector('.nav-item[data-page="' + page + '"]');
         if (activeNav) activeNav.classList.add('active');
-
         if (pageTitle && pageMeta[page]) pageTitle.textContent = pageMeta[page].title;
         if (pageIntro && pageMeta[page]) pageIntro.textContent = pageMeta[page].intro;
-
         sections.forEach(function (s) { s.style.display = 'none'; });
+        if (detailSection) detailSection.style.display = 'none';
         var el = document.getElementById(page + '-section');
         if (el) el.style.display = 'block';
     }
@@ -133,6 +143,61 @@ document.addEventListener('DOMContentLoaded', function () {
             switchToPage(this.getAttribute('data-page'));
         });
     });
+
+    // ═══════════════════════════════════════════
+    // Back button
+    // ═══════════════════════════════════════════
+    var backBtn = document.getElementById('back-btn');
+    if (backBtn) {
+        backBtn.addEventListener('click', function () {
+            switchToPage(currentPage === 'post' ? 'about' : currentPage);
+        });
+    }
+
+    // ═══════════════════════════════════════════
+    // Post click interception → load inline
+    // ═══════════════════════════════════════════
+    document.addEventListener('click', function (e) {
+        var link = e.target.closest('.SideNav-item[data-post-url]');
+        if (!link) return;
+        e.preventDefault();
+        loadPostDetail(
+            link.getAttribute('data-post-url'),
+            link.getAttribute('data-post-title'),
+            link.getAttribute('data-post-date')
+        );
+    });
+
+    function loadPostDetail(url, title, date) {
+        currentPage = 'post';
+        sections.forEach(function (s) { s.style.display = 'none'; });
+        if (detailSection) detailSection.style.display = 'block';
+        if (pageTitle) pageTitle.textContent = title || 'Post';
+        if (pageIntro) pageIntro.textContent = date || '';
+        navItems.forEach(function (n) { n.classList.remove('active'); });
+        if (detailContent) detailContent.innerHTML = '<div class="post-loading">Loading...</div>';
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.onload = function () {
+            if (xhr.status !== 200 || !detailContent) return;
+            try {
+                var doc = new DOMParser().parseFromString(xhr.responseText, 'text/html');
+                var body = doc.getElementById('postBody');
+                if (body) {
+                    detailContent.innerHTML = '<div class="markdown-body">' + body.innerHTML + '</div>';
+                } else {
+                    detailContent.innerHTML = '<p class="post-error">Content not found.</p>';
+                }
+            } catch (e) {
+                detailContent.innerHTML = '<p class="post-error">Failed to load content.</p>';
+            }
+        };
+        xhr.onerror = function () {
+            if (detailContent) detailContent.innerHTML = '<p class="post-error">Network error.</p>';
+        };
+        xhr.send();
+    }
 
     // ═══════════════════════════════════════════
     // Load posts from postList.json
@@ -175,6 +240,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 var item = document.createElement('a');
                 item.href = post.postUrl;
                 item.className = 'SideNav-item';
+                item.setAttribute('data-post-url', post.postUrl);
+                item.setAttribute('data-post-title', post.postTitle);
+                item.setAttribute('data-post-date', post.createdDate);
                 item.innerHTML = '<div class="post-item-content"><span class="listTitle">' +
                     post.postTitle + '</span><span class="LabelTime">' +
                     post.createdDate + '</span></div>';

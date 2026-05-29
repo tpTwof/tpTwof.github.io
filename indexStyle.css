@@ -207,6 +207,23 @@ html,body{margin:0!important;padding:0!important;background-color:#f6f8fa!import
 }
 .skill-item:hover{background:rgba(164,74,82,0.15)}
 
+/* ---------- Post detail ---------- */
+.back-btn{
+    display:inline-flex;align-items:center;gap:6px;
+    background:none;border:none;
+    color:#a54a52;font-size:15px;
+    cursor:pointer;padding:0;
+    margin-bottom:24px;
+    transition:opacity .2s
+}
+.back-btn:hover{opacity:.7}
+.post-detail-content .markdown-body{color:#24292e!important}
+.post-detail-content .markdown-body h1,
+.post-detail-content .markdown-body h2,
+.post-detail-content .markdown-body h3{color:#24292e!important}
+.post-loading{text-align:center;color:#57606a;padding:60px 0;font-size:16px}
+.post-error{text-align:center;color:#d73a4a;padding:40px 0}
+
 /* ==================== Responsive ==================== */
 @media(max-width:1200px){
     .layout-wrapper{width:90vw!important}
