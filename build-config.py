@@ -24,12 +24,12 @@ def minify_css(content):
     return content.strip()
 
 def minify_js(content):
-    """压缩JS"""
+    """压缩JS（保留字符串内的空格）"""
     # 移除单行注释（仅行首）
     lines = content.split('\n')
     lines = [line for line in lines if not line.strip().startswith('//')]
     content = ' '.join(lines)
-    # 移除多余空格
+    # 移除多余空格（不影响引号内的内容）
     content = re.sub(r'\s+', ' ', content)
     content = content.strip()
     return content
@@ -52,11 +52,7 @@ def main():
 
     print("正在生成 config.json...")
 
-    # Gmeek需要在CSS外包裹<style>标签，JS外包裹<script>标签
-    style_tag = f"<style>{style}</style>"
-    index_style_tag = f"<style>{index_style}</style>"
-    index_script_tag = f"<script>{index_script}</script>"
-
+    # Gmeek config 字段直接存储原始 CSS/JS，不包裹标签
     config = {
         "title": "tpTwof's Blog",
         "subTitle": "Thoughts on code, design, and life",
@@ -77,9 +73,9 @@ def main():
         "rssSplit": "sentence",
         "bottomText": "",
         "head": "<link href='https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap' rel='stylesheet'>",
-        "style": style_tag,
-        "indexStyle": index_style_tag,
-        "indexScript": index_script_tag,
+        "style": style,
+        "indexStyle": index_style,
+        "indexScript": index_script,
         "iconList": {},
         "exlink": {},
         "singlePage": [],

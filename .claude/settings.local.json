@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(bash build-config.sh)",
-      "Bash(python build-config.py)"
+      "Bash(python build-config.py)",
+      "Bash(python -m json.tool)",
+      "Bash(python3 *)"
     ]
   }
 }
