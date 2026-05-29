@@ -1,17 +1,14 @@
-// ===== 首页脚本：左侧导航 + 页面切换 + 文章加载 =====
-
 document.addEventListener('DOMContentLoaded', function () {
     var content = document.getElementById('content');
     if (!content) return;
 
-    // 创建布局容器
     var layoutWrapper = document.createElement('div');
     layoutWrapper.className = 'layout-wrapper';
 
-    // 创建左侧边栏
     var leftSidebar = document.createElement('aside');
     leftSidebar.className = 'left-sidebar';
-    leftSidebar.innerHTML = '<div class="sidebar-header">' +
+    leftSidebar.innerHTML =
+        '<div class="sidebar-header">' +
         '<img src="https://github.githubassets.com/favicons/favicon.svg" alt="avatar" class="sidebar-avatar">' +
         '<h1 class="sidebar-title">tpTwof</h1>' +
         '<p class="sidebar-subtitle">Developer</p>' +
@@ -32,61 +29,66 @@ document.addEventListener('DOMContentLoaded', function () {
         '</nav>' +
         '<div class="sidebar-footer">' +
         '<div class="social-links">' +
-        '<a href="https://github.com/tpTwof" target="_blank" class="social-link" title="GitHub">' +
-        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg></a>' +
-        '<a href="https://tpTwof.github.io/rss.xml" target="_blank" class="social-link" title="RSS">' +
-        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19.01 7.38 20 6.18 20C4.98 20 4 19.01 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 5.17 17.6l-1.46-1.46a7.07 7.07 0 0 0-3.71-3.71V10.1z"/></svg></a>' +
+        '<a href="#" class="social-link" title="Facebook"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>' +
+        '<a href="#" class="social-link" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>' +
+        '<a href="#" class="social-link" title="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 6a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg></a>' +
+        '<a href="https://github.com/tpTwof" target="_blank" class="social-link" title="GitHub"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg></a>' +
+        '<a href="https://tpTwof.github.io/rss.xml" target="_blank" class="social-link" title="RSS"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19.01 7.38 20 6.18 20C4.98 20 4 19.01 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 5.17 17.6l-1.46-1.46a7.07 7.07 0 0 0-3.71-3.71V10.1z"/></svg></a>' +
         '</div>' +
         '<div class="sidebar-copyright"><p>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></p></div>' +
         '</div>';
 
-    // 创建主内容区
     var mainArea = document.createElement('main');
     mainArea.className = 'main-area';
-    mainArea.innerHTML = '<div class="main-content-wrapper">' +
+    mainArea.innerHTML =
+        '<div class="main-content-wrapper">' +
         '<div class="page-header">' +
-        '<h1 class="page-title">Welcome to My Space</h1>' +
+        '<h1 class="page-title">About Me</h1>' +
         '<div class="title-underline"></div>' +
-        '<p class="page-intro">Developer · Designer · Lifelong Learner</p>' +
+        '<p class="page-intro">Developer · Designer · Lifelong Learner — sharing insights on code, design, and creative technology.</p>' +
         '</div>' +
-        '<div class="content-area">' +
         '<section id="about-section" class="content-section">' +
+        '<div class="featured-card">' +
+        '<img src="https://github.githubassets.com/favicons/favicon.svg" alt="Featured work" style="width:100%;border-radius:8px">' +
+        '<p class="card-caption">Reflux HTML CSS Template</p>' +
+        '</div>' +
         '<div class="about-content">' +
         '<div class="about-section">' +
         '<h3>About Me</h3>' +
         '<p>热爱技术与设计，专注于Web开发、开源项目和个人成长。在这里分享我的学习笔记、项目经验和生活感悟。</p>' +
         '</div></div></section>' +
-        '<section id="skills-section" class="content-section" style="display:none;">' +
+        '<section id="skills-section" class="content-section" style="display:none">' +
         '<div class="about-section">' +
         '<h3>What I\'m good at</h3>' +
         '<div class="skills-grid">' +
-        '<span class="skill-item">JavaScript</span>' +
-        '<span class="skill-item">TypeScript</span>' +
-        '<span class="skill-item">React</span>' +
-        '<span class="skill-item">Vue</span>' +
-        '<span class="skill-item">Node.js</span>' +
-        '<span class="skill-item">Python</span>' +
-        '<span class="skill-item">Git</span>' +
-        '<span class="skill-item">UI/UX</span>' +
+        '<span class="skill-item">JavaScript</span><span class="skill-item">TypeScript</span>' +
+        '<span class="skill-item">React</span><span class="skill-item">Vue</span>' +
+        '<span class="skill-item">Node.js</span><span class="skill-item">Python</span>' +
+        '<span class="skill-item">Git</span><span class="skill-item">UI/UX</span>' +
         '</div></div></section>' +
-        '<section id="works-section" class="content-section" style="display:none;">' +
+        '<section id="works-section" class="content-section" style="display:none">' +
         '<div class="works-grid"></div></section>' +
-        '<section id="contact-section" class="content-section" style="display:none;">' +
+        '<section id="contact-section" class="content-section" style="display:none">' +
         '<div class="contact-form">' +
         '<div class="form-group"><label class="form-label">Name</label><input type="text" class="form-input" placeholder="Your name"></div>' +
         '<div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" placeholder="your@email.com"></div>' +
         '<div class="form-group"><label class="form-label">Message</label><textarea class="form-textarea" placeholder="Your message..."></textarea></div>' +
         '<button type="submit" class="submit-btn">Send Message</button>' +
         '</div></section>' +
-        '<div id="posts-container"></div></div></div>';
+        '<div id="posts-container"></div></div>';
 
     layoutWrapper.appendChild(leftSidebar);
     layoutWrapper.appendChild(mainArea);
-
     content.innerHTML = '';
     content.appendChild(layoutWrapper);
 
-    // 板块配置
+    var pageTitles = {
+        'about': { title: 'About Me', intro: 'Developer · Designer · Lifelong Learner — sharing insights on code, design, and creative technology.' },
+        'skills': { title: "What I'm good at", intro: 'Technologies, tools, and disciplines I work with every day.' },
+        'works': { title: 'My Work', intro: 'Selected projects and open-source contributions.' },
+        'contact': { title: 'Contact Me', intro: 'Have a project in mind? I\'d love to hear about it.' }
+    };
+
     var sectionNames = {
         'work': 'My Work',
         'skills': "What I'm good at",
@@ -94,7 +96,6 @@ document.addEventListener('DOMContentLoaded', function () {
         'essay': '随笔'
     };
 
-    // 加载文章
     var xhr = new XMLHttpRequest();
     xhr.open('GET', 'postList.json', true);
     xhr.onload = function () {
@@ -108,78 +109,62 @@ document.addEventListener('DOMContentLoaded', function () {
     function renderSections(data) {
         var container = document.getElementById('posts-container');
         if (!container) return;
-
         var labelColorDict = data.labelColorDict || {};
         var sections = {};
-
-        // postList.json 是对象而非数组，遍历其键
         Object.keys(data).forEach(function (key) {
             if (key === 'labelColorDict') return;
             var post = data[key];
             if (post.labels && post.labels.length > 0) {
                 post.labels.forEach(function (labelName) {
                     var tagName = labelName.toLowerCase();
-                    if (!sections[tagName]) {
-                        sections[tagName] = [];
-                    }
+                    if (!sections[tagName]) sections[tagName] = [];
                     sections[tagName].push(post);
                 });
             }
         });
-
         Object.keys(sections).forEach(function (tag) {
             var sectionTitle = sectionNames[tag] || tag;
             var sectionDiv = document.createElement('div');
             sectionDiv.className = 'post-section';
             sectionDiv.innerHTML = '<h2 class="section-title">' + sectionTitle + '</h2>';
-
             var postListEl = document.createElement('div');
             postListEl.className = 'SideNav';
-
             sections[tag].forEach(function (post) {
                 var item = document.createElement('a');
                 item.href = post.postUrl;
                 item.className = 'SideNav-item';
-                item.innerHTML = '<div class="post-item-content"><span class="listTitle">' + post.postTitle + '</span><div class="post-meta">' +
-                    post.labels.map(function(labelName) {
+                item.innerHTML =
+                    '<div class="post-item-content"><span class="listTitle">' + post.postTitle + '</span><div class="post-meta">' +
+                    post.labels.map(function (labelName) {
                         var color = labelColorDict[labelName] || '#999';
                         return '<span class="Label" style="background-color:' + color + '20;color:' + color + '">' + labelName + '</span>';
                     }).join(' ') +
                     '<span class="LabelTime">' + post.createdDate + '</span></div></div>';
                 postListEl.appendChild(item);
             });
-
             sectionDiv.appendChild(postListEl);
             container.appendChild(sectionDiv);
         });
     }
 
-    // 导航切换
     var navItems = document.querySelectorAll('.nav-item');
-    var sections = document.querySelectorAll('.content-section');
+    var contentSections = document.querySelectorAll('.content-section');
+    var pageTitleEl = document.querySelector('.page-title');
+    var pageIntroEl = document.querySelector('.page-intro');
 
     navItems.forEach(function (item) {
         item.addEventListener('click', function (e) {
             e.preventDefault();
-
-            navItems.forEach(function (nav) {
-                nav.classList.remove('active');
-            });
+            navItems.forEach(function (nav) { nav.classList.remove('active'); });
             this.classList.add('active');
-
             var targetPage = this.getAttribute('data-page');
-
-            sections.forEach(function (section) {
-                section.style.display = 'none';
-            });
-
+            contentSections.forEach(function (section) { section.style.display = 'none'; });
             var targetSection = document.getElementById(targetPage + '-section');
-            if (targetSection) {
-                targetSection.style.display = 'block';
+            if (targetSection) targetSection.style.display = 'block';
+            if (pageTitles[targetPage]) {
+                if (pageTitleEl) pageTitleEl.textContent = pageTitles[targetPage].title;
+                if (pageIntroEl) pageIntroEl.textContent = pageTitles[targetPage].intro;
             }
         });
     });
 });
-
-// Gmeek console 版权信息
-console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
