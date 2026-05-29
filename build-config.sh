@@ -41,12 +41,20 @@ INDEX_SCRIPT=$(minify_js indexScript.js)
 
 echo "正在生成 config.json..."
 
+# Gmeek 模板直接插入字段内容，需要自带标签
+STYLE_TAG=""
+[ -n "$STYLE" ] && STYLE_TAG="<style>${STYLE}</style>"
+INDEX_STYLE_TAG=""
+[ -n "$INDEX_STYLE" ] && INDEX_STYLE_TAG="<style>${INDEX_STYLE}</style>"
+INDEX_SCRIPT_TAG=""
+[ -n "$INDEX_SCRIPT" ] && INDEX_SCRIPT_TAG="<script>${INDEX_SCRIPT}</script>"
+
 # 使用 jq 生成 JSON（推荐，自动处理转义）
 if command -v jq &> /dev/null; then
     jq -n \
-        --arg style "$STYLE" \
-        --arg indexStyle "$INDEX_STYLE" \
-        --arg indexScript "$INDEX_SCRIPT" \
+        --arg style "$STYLE_TAG" \
+        --arg indexStyle "$INDEX_STYLE_TAG" \
+        --arg indexScript "$INDEX_SCRIPT_TAG" \
         '{
             "title": "tpTwof'\''s Blog",
             "subTitle": "Thoughts on code, design, and life",
