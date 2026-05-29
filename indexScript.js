@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
         '</div></div></section>' +
         '<section id="works-section" class="content-section" style="display:none"></section>' +
         '<section id="contact-section" class="content-section" style="display:none"></section>' +
-        '<div id="posts-container"></div></div>';
+        '</div>';
 
     layoutWrapper.appendChild(leftSidebar);
     layoutWrapper.appendChild(mainArea);
@@ -82,26 +82,32 @@ document.addEventListener('DOMContentLoaded', function () {
     xhr.send();
 
     function renderSections(data) {
-        var container = document.getElementById('posts-container');
-        if (!container) return;
-        var labelColorDict = data.labelColorDict || {};
-        var sections = {};
+        var labelMap = { 'blog': 'about', 'works': 'works' };
+        var labels = Object.keys(labelMap);
+        var groups = {};
+        labels.forEach(function (l) { groups[l] = []; });
+
         Object.keys(data).forEach(function (key) {
             if (key === 'labelColorDict') return;
             var post = data[key];
             post.labels.forEach(function (label) {
                 var tag = label.toLowerCase();
-                if (!sections[tag]) sections[tag] = [];
-                sections[tag].push(post);
+                if (groups[tag]) groups[tag].push(post);
             });
         });
-        Object.keys(sections).forEach(function (tag) {
+
+        labels.forEach(function (tag) {
+            var posts = groups[tag];
+            if (posts.length === 0) return;
+            var targetId = labelMap[tag] + '-section';
+            var target = document.getElementById(targetId);
+            if (!target) return;
             var sectionDiv = document.createElement('div');
             sectionDiv.className = 'post-section';
-            sectionDiv.innerHTML = '<h2 class="section-title">' + tag.toUpperCase() + '</h2>';
+            sectionDiv.innerHTML = '<h2 class="section-title">Posts</h2>';
             var listEl = document.createElement('div');
             listEl.className = 'SideNav';
-            sections[tag].forEach(function (post) {
+            posts.forEach(function (post) {
                 var item = document.createElement('a');
                 item.href = post.postUrl;
                 item.className = 'SideNav-item';
@@ -109,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 listEl.appendChild(item);
             });
             sectionDiv.appendChild(listEl);
-            container.appendChild(sectionDiv);
+            target.appendChild(sectionDiv);
         });
     }
 
