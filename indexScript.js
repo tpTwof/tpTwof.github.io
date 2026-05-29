@@ -188,7 +188,11 @@ document.addEventListener('DOMContentLoaded', function () {
         var xhr = new XMLHttpRequest();
         xhr.open('GET', url, true);
         xhr.onload = function () {
-            if (xhr.status !== 200 || !detailContent) return;
+            if (!detailContent) return;
+            if (xhr.status !== 200) {
+                detailContent.innerHTML = '<p class="post-error">Post not found (404). It may have been deleted.</p>';
+                return;
+            }
             try {
                 var doc = new DOMParser().parseFromString(xhr.responseText, 'text/html');
                 var body = doc.getElementById('postBody');
@@ -211,7 +215,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Load posts from postList.json
     // ═══════════════════════════════════════════
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'postList.json', true);
+    xhr.open('GET', 'postList.json?_=' + Date.now(), true);
     xhr.onload = function () {
         if (xhr.status !== 200) return;
         try { renderSections(JSON.parse(xhr.responseText)); } catch (e) {}

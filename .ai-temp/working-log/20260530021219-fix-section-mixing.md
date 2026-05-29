@@ -1,47 +1,56 @@
-# 工作日志：修复板块混乱问题
+# 工作日志：修复板块混乱 + 404 错误处理
 
 ## 上次工作结果
-- 完成 SPA 风格文章详情内联加载（点击文章 → 右侧主页面显示内容）
-- 导航切换正常，postList.json 动态渲染
+- 完成 SPA 风格文章详情内联加载
+- 新增 Blog 独立板块，blog→blog，works→works
 
 ## 本次工作目标
-- 修复 issue 添加的新 blog 文章不显示在对应位置的问题
-- 板块之间不混乱：blog 文章和 works 文章各自归属独立板块
+- 修复删除 issue 后文章仍显示、点击后 Loading 卡死的问题
+- 修复新 issue 文章不显示的问题
 
-## 完成内容
+## 根因分析
 
-### 根因分析
-`labelMap` 将 `blog` 标签文章映射到 `about-section`（About Me），导致博客文章和个人介绍共处一个板块。`works` 标签映射正确。
+### Bug 1：删除文章点击后 Loading 卡死
+`loadPostDetail` 中 `xhr.onload` 对非 200 状态的处理是 `return`，不更新 UI。
+→ 文章 HTML 文件不存在时，用户看到 "Loading..." 永远不消失。
 
-根本问题：缺少独立的 Blog 板块。
+### Bug 2：数据同步
+经核查 `postList.json`、Gmeek 默认列表、`docs/post/*.html` 三者数据一致。
+被删除文章已经不在数据中。用户看到旧文章可能是浏览器缓存未更新。
 
-### 修改内容
+## 修改内容
 
-1. **新增 Blog 导航项** — 左侧边栏新增 "Blog" 菜单（含文档图标 SVG），位于 About Me 和 Skills 之间
-2. **新增 blog-section** — 右侧主内容区新增 `#blog-section`，用于承载 blog 标签文章
-3. **修正 labelMap** — `{ 'blog': 'blog', 'works': 'works' }`，各自进入独立板块
-4. **更新 pageMeta** — 新增 Blog 页面的标题和简介文案
-5. **about-section 精简** — 仅保留个人介绍静态内容，不再承载博客文章
+### 1. 修复 loadPostDetail 404 处理
+```javascript
+// 旧：静默 return，Loading 卡死
+if (xhr.status !== 200 || !detailContent) return;
+
+// 新：显示友好错误提示
+if (!detailContent) return;
+if (xhr.status !== 200) {
+    detailContent.innerHTML = '<p class="post-error">Post not found (404). It may have been deleted.</p>';
+    return;
+}
+```
+
+### 2. 添加 postList.json 缓存破坏
+```javascript
+// 旧
+xhr.open('GET', 'postList.json', true);
+
+// 新：添加时间戳参数避免浏览器缓存
+xhr.open('GET', 'postList.json?_=' + Date.now(), true);
+```
 
 ### 修改的文件
-1. `indexScript.js` — Gmeek 模式布局创建 + nav + labelMap + pageMeta
-2. `docs/index.html` — 内联脚本同步更新
+1. `indexScript.js` — loadPostDetail 错误处理 + 缓存破坏
+2. `docs/index.html` — 同步内联脚本修改
 3. `config.json` — 通过 build-config.py 重新生成
 
-## 板块结构（修改后）
-| 导航项 | Section ID | 内容 |
-|---|---|---|
-| About Me | about-section | 个人介绍（静态） |
-| Blog | blog-section | blog 标签文章（postList.json） |
-| What I'm good at | skills-section | 技能标签（静态） |
-| My Work | works-section | works 标签文章（postList.json） |
-| Contact Me | contact-section | 联系表单（静态） |
-
 ## 预期结果
-- 5 个导航项各自对应独立板块，内容不混
-- blog 标签文章只出现在 Blog 板块
-- works 标签文章只出现在 My Work 板块
-- 导航切换时标题和简介同步更新
+- 点击已删除文章 → 显示 "Post not found (404). It may have been deleted." 而非永久 Loading
+- postList.json 每次加载都获取最新版本，不受浏览器缓存影响
+- 新 issue 文章在 Gmeek action 构建后正常显示
 
 ## 实际结果
 （待用户验证后回填）
