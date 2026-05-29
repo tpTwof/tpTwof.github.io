@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
         'essay': '随笔'
     };
 
-    // 从 postList.json 加载文章
+    // 加载文章
     var xhr = new XMLHttpRequest();
     xhr.open('GET', 'postList.json', true);
     xhr.onload = function () {
@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function () {
         var container = document.getElementById('posts-container');
         if (!container) return;
 
-        // 按标签分组
         var sections = {};
         postList.forEach(function (post) {
             if (post.labels && post.labels.length > 0) {
@@ -38,7 +37,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
-        // 渲染每个板块
         Object.keys(sections).forEach(function (tag) {
             var sectionTitle = sectionNames[tag] || tag;
             var sectionDiv = document.createElement('div');
@@ -52,17 +50,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 var item = document.createElement('a');
                 item.href = post.url;
                 item.className = 'SideNav-item';
-                item.innerHTML = `
-                    <div class="post-item-content">
-                        <span class="listTitle">${post.title}</span>
-                        <div class="post-meta">
-                            ${post.labels.map(function(l) {
-                                return '<span class="Label" style="background-color:' + l.color + '20;color:' + l.color + '">' + l.name + '</span>';
-                            }).join(' ')}
-                            <span class="LabelTime">${post.date}</span>
-                        </div>
-                    </div>
-                `;
+                item.innerHTML = '<div class="post-item-content"><span class="listTitle">' + post.title + '</span><div class="post-meta">' +
+                    post.labels.map(function(l) {
+                        return '<span class="Label" style="background-color:' + l.color + '20;color:' + l.color + '">' + l.name + '</span>';
+                    }).join(' ') +
+                    '<span class="LabelTime">' + post.date + '</span></div></div>';
                 postListEl.appendChild(item);
             });
 
@@ -79,18 +71,13 @@ document.addEventListener('DOMContentLoaded', function () {
         item.addEventListener('click', function (e) {
             e.preventDefault();
 
-            // 移除所有 active 状态
             navItems.forEach(function (nav) {
                 nav.classList.remove('active');
             });
-
-            // 添加 active 状态到当前项
             this.classList.add('active');
 
-            // 获取目标页面
             var targetPage = this.getAttribute('data-page');
 
-            // 显示对应板块，隐藏其他
             sections.forEach(function (section) {
                 section.style.display = 'none';
             });
