@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(bash build-config.sh)"
+      "Bash(bash build-config.sh)",
+      "Bash(python build-config.py)"
     ]
   }
 }
