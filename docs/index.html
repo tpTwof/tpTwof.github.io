@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
-    
+    <link rel="stylesheet" href="../layout.css" />
     <link rel="icon" href="https://github.githubassets.com/favicons/favicon.svg"><script>
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
@@ -17,149 +17,141 @@
 <meta property="og:url" content="https://tpTwof.github.io">
 <meta property="og:image" content="https://github.githubassets.com/favicons/favicon.svg">
 <title>tpTwof's Blog</title>
-
 </head>
 <style>
-body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
-#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
-#footer {margin-top:64px; text-align: center;font-size: small;}
-
-</style>
-
-<style>
-.avatar {transition: 0.8s;width:64px;height:64px;object-fit: cover;}
-.avatar:hover{transform: scale(1.15) rotate(360deg);}
-.title-left a{color:inherit;text-decoration:none;vertical-align: bottom;font-size:40px;font-weight: bold;font-family:Monaco;margin-left:8px;}
-.title-right{display:flex;margin:auto 0 0 auto;}
-.title-right button{margin-right:8px;padding:16px;}
-.title-right .circle{padding: 14px 16px;}
-
-.SideNav{min-width: 360px;}
-.SideNav-icon{margin-right: 16px}
-.SideNav-item .Label{color: #fff;margin-left:4px;}
-.d-flex{min-width:0;}
-.listTitle{overflow:hidden;white-space:nowrap;text-overflow: ellipsis;max-width: 100%;}
-.listLabels{white-space:nowrap;display:flex;}
-.listLabels object{max-height:16px;max-width:24px;}
-
+body {
+    box-sizing: border-box;
+    min-width: 200px;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    line-height: 1.5;
+}
+#header { display: none; }
+#footer { display: none; }
+.SideNav { min-width: auto; }
+.SideNav-icon { margin-right: 16px; }
+.SideNav-item .Label { color: #fff; margin-left: 4px; }
+.d-flex { min-width: 0; }
+.listTitle { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; max-width: 100%; }
+.listLabels { white-space: nowrap; display: flex; }
+.listLabels object { max-height: 16px; max-width: 24px; }
 @media (max-width: 600px) {
-    body {padding: 8px;}
-    .avatar {width:40px;height:40px;}
-    .blogTitle{display:none;}
-    #buttonRSS{display:none;}
-    .LabelTime{display:none;}
+    .LabelTime { display: none; }
 }
 </style>
-.profile-section{display:flex;gap:48px;margin-bottom:48px;padding:40px;background:#f5f5f7;border-radius:18px}.profile-avatar{width:160px;height:160px;border-radius:9999px;object-fit:cover;flex-shrink:0;border:3px solid #fff;box-shadow:rgba(0,0,0,0.22) 3px 5px 30px 0}.profile-info{flex:1;display:flex;flex-direction:column;justify-content:center}.profile-name{font-size:40px;font-weight:600;letter-spacing:-0.374px;line-height:1.1;margin:0 0 8px 0;color:#1d1d1f}.profile-bio{font-size:21px;font-weight:600;letter-spacing:0.231px;line-height:1.19;color:#1d1d1f;margin:0 0 16px 0}.profile-desc{font-size:17px;font-weight:400;line-height:1.47;color:#333;margin:0 0 20px 0}.profile-links{display:flex;gap:12px}.profile-links a{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:#0066cc;color:#fff;border-radius:9999px;font-size:14px;font-weight:400;transition:all 0.2s}.profile-links a:hover{background:#0071e3;text-decoration:none;transform:scale(0.95)}.profile-links a.secondary{background:transparent;color:#0066cc;border:1px solid #0066cc}.profile-links a.secondary:hover{background:#f0f0f0}.main-layout{display:flex;gap:32px}.main-content{flex:1;min-width:0}.sidebar{width:280px;flex-shrink:0}.sidebar-card{background:#fff;border:1px solid #e0e0e0;border-radius:18px;padding:24px;margin-bottom:20px}.sidebar-card h3{font-size:14px;font-weight:600;letter-spacing:-0.224px;color:#1d1d1f;margin:0 0 16px 0;padding-bottom:12px;border-bottom:1px solid #f0f0f0}.sidebar-card p{font-size:14px;color:#333;line-height:1.43;margin:0 0 8px 0}.sidebar-skills{display:flex;flex-wrap:wrap;gap:8px}.sidebar-skills span{padding:6px 14px;background:#f5f5f7;border-radius:9999px;font-size:12px;color:#333;font-weight:400}.sidebar-links a{display:flex;align-items:center;gap:8px;padding:8px 0;color:#0066cc;font-size:14px;border-bottom:1px solid #f0f0f0;transition:color 0.2s}.sidebar-links a:last-child{border-bottom:none}.sidebar-links a:hover{color:#0071e3;text-decoration:none}.section-title{font-size:28px;font-weight:600;letter-spacing:0;line-height:1.14;margin:0 0 24px 0;color:#1d1d1f}@media(max-width:900px){.main-layout{flex-direction:column}.sidebar{width:100%}.profile-section{flex-direction:column;align-items:center;text-align:center;gap:24px;padding:32px 24px}.profile-avatar{width:120px;height:120px}.profile-name{font-size:34px}.profile-bio{font-size:18px}.profile-links{justify-content:center}}@media(max-width:600px){body{padding:16px}.profile-section{padding:24px 16px}.profile-avatar{width:96px;height:96px}.profile-name{font-size:28px}.profile-bio{font-size:17px}.profile-desc{font-size:15px}.sidebar-card{padding:16px}}
-
 
 <body>
-    <div id="header">
-<div class="title-left">
-    <img src="https://github.githubassets.com/favicons/favicon.svg" class="avatar circle" id="avatarImg" alt="avatar"><a class="blogTitle">tpTwof's Blog</a></div>
-<div class="title-right">
-    <a href="https://tpTwof.github.io/tag.html" id="buttonSearch" class="btn btn-invisible circle" title="搜索">
-        <svg class="octicon" width="16" height="16" >
-            <path id="pathSearch" fill-rule="evenodd"></path>
-        </svg>
-    </a>
-    
-    
-    <a href="https://tpTwof.github.io/rss.xml" target="_blank" id="buttonRSS" class="btn btn-invisible circle" title="RSS">
-        <svg class="octicon" width="16" height="16" >
-            <path id="pathRSS" fill-rule="evenodd"></path>
-        </svg>
-    </a>
-    <a class="btn btn-invisible circle" onclick="modeSwitch()" title="切换主题">
-        <svg class="octicon" width="16" height="16" >
-            <path id="themeSwitch" fill-rule="evenodd"></path>
-        </svg>
-    </a>
-</div>
-</div>
-    <div id="content">
-<div style="margin-bottom: 16px;">Thoughts on code, design, and life</div>
-<nav class="SideNav border">
-<a class="SideNav-item d-flex flex-items-center flex-justify-between" href="post/wo-de-di-yi-pian-bo-ke.html">
-    <div class="d-flex flex-items-center">
-        <svg class="SideNav-icon octicon" style="width:16px;height:16px"><path class="svgTop0" d=""></path>
-        </svg>
-        <span class="listTitle">我的第一篇博客</span>
-    </div>
-    <div class="listLabels">
-        
-        <span class="Label LabelName" style="background-color:#aaaaaa"><object><a style="color:#fff" href="tag.html#blog">blog</a></object></span>
-        <span class="Label LabelTime" style="background-color:#333333">2026-05-28</span>
-    </div>
-</a>
-</nav>
-</div>
-    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://tpTwof.github.io">tpTwof's Blog</a></div>
-<div id="footer2">
-    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
-</div>
+    <div class="layout-wrapper">
+        <!-- 左侧固定边栏 -->
+        <aside class="left-sidebar">
+            <div class="sidebar-header">
+                <img src="https://github.githubassets.com/favicons/favicon.svg" alt="avatar" class="sidebar-avatar">
+                <h1 class="sidebar-title">tpTwof</h1>
+                <p class="sidebar-subtitle">Developer</p>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-page="about">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                    <span>About Me</span>
+                </a>
+                <a href="#skills" class="nav-item" data-page="skills">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19.14 12.94c.04-.31.06-.63.06-.94 0-.31-.02-.63-.06-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+                    <span>What I'm good at</span>
+                </a>
+                <a href="#works" class="nav-item" data-page="works">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>
+                    <span>My Work</span>
+                </a>
+                <a href="#contact" class="nav-item" data-page="contact">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    <span>Contact Me</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="social-links">
+                    <a href="https://github.com/tpTwof" target="_blank" class="social-link" title="GitHub">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+                    </a>
+                    <a href="https://tpTwof.github.io/rss.xml" target="_blank" class="social-link" title="RSS">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19.01 7.38 20 6.18 20C4.98 20 4 19.01 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 5.17 17.6l-1.46-1.46a7.07 7.07 0 0 0-3.71-3.71V10.1z"/></svg>
+                    </a>
+                </div>
+                <div class="sidebar-copyright">
+                    <p>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></p>
+                </div>
+            </div>
+        </aside>
 
-<script>
-var now=new Date();
-document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+        <!-- 右侧主内容区 -->
+        <main class="main-area">
+            <div class="main-content-wrapper">
+                <div class="page-header">
+                    <h1 class="page-title">Welcome to My Space</h1>
+                    <div class="title-underline"></div>
+                    <p class="page-intro">Developer · Designer · Lifelong Learner</p>
+                </div>
 
-if("2026-05-28"!=""){
-    var startSite=new Date("2026-05-28");
-    var diff=now.getTime()-startSite.getTime();
-    var diffDay=Math.floor(diff/(1000*60*60*24));
-    document.getElementById("runday").innerHTML="网站运行 "+diffDay+" 天"+" • ";
-}
-</script></div>
+                <div class="content-area">
+                    <!-- 关于我 -->
+                    <section id="about-section" class="content-section">
+                        <div class="about-content">
+                            <div class="about-section">
+                                <h3>About Me</h3>
+                                <p>热爱技术与设计，专注于Web开发、开源项目和个人成长。在这里分享我的学习笔记、项目经验和生活感悟。</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 技能展示 -->
+                    <section id="skills-section" class="content-section" style="display:none;">
+                        <div class="about-section">
+                            <h3>What I'm good at</h3>
+                            <div class="skills-grid">
+                                <span class="skill-item">JavaScript</span>
+                                <span class="skill-item">TypeScript</span>
+                                <span class="skill-item">React</span>
+                                <span class="skill-item">Vue</span>
+                                <span class="skill-item">Node.js</span>
+                                <span class="skill-item">Python</span>
+                                <span class="skill-item">Git</span>
+                                <span class="skill-item">UI/UX</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 作品展示 -->
+                    <section id="works-section" class="content-section" style="display:none;">
+                        <div class="works-grid">
+                            <!-- 作品通过 postList.json 动态加载，标签为 work 的文章 -->
+                        </div>
+                    </section>
+
+                    <!-- 联系方式 -->
+                    <section id="contact-section" class="content-section" style="display:none;">
+                        <div class="contact-form">
+                            <div class="form-group">
+                                <label class="form-label">Name</label>
+                                <input type="text" class="form-input" placeholder="Your name">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-input" placeholder="your@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Message</label>
+                                <textarea class="form-textarea" placeholder="Your message..."></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">Send Message</button>
+                        </div>
+                    </section>
+
+                    <!-- 文章列表区域 -->
+                    <div id="posts-container"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../indexScript.js"></script>
 </body>
-<script>
-var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'search': 'M15.7 13.3l-3.81-3.83A5.93 5.93 0 0 0 13 6c0-3.31-2.69-6-6-6S1 2.69 1 6s2.69 6 6 6c1.3 0 2.48-.41 3.47-1.11l3.83 3.81c.19.2.45.3.7.3.25 0 .52-.09.7-.3a.996.996 0 0 0 0-1.41v.01zM7 10.7c-2.59 0-4.7-2.11-4.7-4.7 0-2.59 2.11-4.7 4.7-4.7 2.59 0 4.7 2.11 4.7 4.7 0 2.59-2.11 4.7-4.7 4.7z', 'rss': 'M2.002 2.725a.75.75 0 0 1 .797-.699C8.79 2.42 13.58 7.21 13.974 13.201a.75.75 0 0 1-1.497.098 10.502 10.502 0 0 0-9.776-9.776.747.747 0 0 1-.7-.798ZM2.84 7.05h-.002a7.002 7.002 0 0 1 6.113 6.111.75.75 0 0 1-1.49.178 5.503 5.503 0 0 0-4.8-4.8.75.75 0 0 1 .179-1.489ZM2 13a1 1 0 1 1 2 0 1 1 0 0 1-2 0Z', 'upload': 'M2.75 14A1.75 1.75 0 0 1 1 12.25v-2.5a.75.75 0 0 1 1.5 0v2.5c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25v-2.5a.75.75 0 0 1 1.5 0v2.5A1.75 1.75 0 0 1 13.25 14Z M11.78 4.72a.749.749 0 1 1-1.06 1.06L8.75 3.811V9.5a.75.75 0 0 1-1.5 0V3.811L5.28 5.78a.749.749 0 1 1-1.06-1.06l3.25-3.25a.749.749 0 0 1 1.06 0l3.25 3.25Z', 'post': 'M0 3.75C0 2.784.784 2 1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 14H1.75A1.75 1.75 0 0 1 0 12.25Zm1.75-.25a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25ZM3.5 6.25a.75.75 0 0 1 .75-.75h7a.75.75 0 0 1 0 1.5h-7a.75.75 0 0 1-.75-.75Zm.75 2.25h4a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1 0-1.5Z'};
-var utterancesLoad=0;
-
-let themeSettings={
-    "dark": ["dark","moon","#00f0ff","dark-blue"],
-    "light": ["light","sun","#ff5000","github-light"],
-    "auto": ["auto","sync","","preferred-color-scheme"]
-};
-function changeTheme(mode, icon, color, utheme){
-    document.documentElement.setAttribute("data-color-mode",mode);
-    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
-    document.getElementById("themeSwitch").parentNode.style.color=color;
-    if(utterancesLoad==1){utterancesTheme(utheme);}
-}
-function modeSwitch(){
-    let currentMode=document.documentElement.getAttribute('data-color-mode');
-    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
-    localStorage.setItem("meek_theme", newMode);
-    if(themeSettings[newMode]){
-        changeTheme(...themeSettings[newMode]);
-    }
-}
-function utterancesTheme(theme){
-    const message={type:'set-theme',theme: theme};
-    const iframe=document.getElementsByClassName('utterances-frame')[0];
-    iframe.contentWindow.postMessage(message,'https://utteranc.es');
-}
-if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
-console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
-</script>
-
-<script>
-document.getElementById("pathSearch").setAttribute("d",IconList["search"]);
-document.getElementById("pathRSS").setAttribute("d",IconList["rss"]);
-iconTOP=document.getElementsByClassName("svgTop1");
-iconPost=document.getElementsByClassName("svgTop0");
-for(var i=0;i<iconTOP.length;i++){
-    iconTOP[i].setAttribute("d",IconList["upload"]);
-    iconTOP[i].parentNode.style.color="red";
-}
-for(var i=0;i<iconPost.length;i++){
-    iconPost[i].setAttribute("d",IconList["post"]);
-}
-
-
-
-
-</script>
-document.addEventListener('DOMContentLoaded',function(){var c=document.getElementById('content');if(!c)return;var profile=document.createElement('div');profile.className='profile-section';profile.innerHTML='<img src="https://github.githubassets.com/favicons/favicon.svg" alt="avatar" class="profile-avatar"><div class="profile-info"><h1 class="profile-name">tpTwof</h1><p class="profile-bio">Developer · Designer · Lifelong Learner</p><p class="profile-desc">热爱技术与设计，专注于Web开发、开源项目和个人成长。在这里分享我的学习笔记、项目经验和生活感悟。</p><div class="profile-links"><a href="https://github.com/tpTwof" target="_blank">GitHub</a><a href="https://tpTwof.github.io/rss.xml" target="_blank" class="secondary">RSS</a></div></div>';c.insertBefore(profile,c.firstChild);var list=c.querySelector('.SideNav');if(!list)return;var wrapper=document.createElement('div');wrapper.className='main-layout';var main=document.createElement('div');main.className='main-content';var title=document.createElement('h2');title.className='section-title';title.textContent='Latest Posts';list.parentNode.insertBefore(wrapper,list);wrapper.appendChild(main);main.appendChild(title);main.appendChild(list);var sidebar=document.createElement('aside');sidebar.className='sidebar';sidebar.innerHTML='<div class="sidebar-card"><h3>About Me</h3><p>全栈开发者，热爱编程与设计。</p><p>专注于构建优雅、高效的Web应用。</p><p>坐标：中国</p></div><div class="sidebar-card"><h3>Skills</h3><div class="sidebar-skills"><span>JavaScript</span><span>TypeScript</span><span>React</span><span>Vue</span><span>Node.js</span><span>Python</span><span>Git</span><span>UI/UX</span></div></div><div class="sidebar-card"><h3>Quick Links</h3><div class="sidebar-links"><a href="https://github.com/tpTwof" target="_blank">GitHub Profile</a><a href="https://tpTwof.github.io/tag.html">All Tags</a><a href="https://tpTwof.github.io/rss.xml" target="_blank">RSS Feed</a></div></div><div class="sidebar-card"><h3>Contact</h3><p>邮箱：your-email@example.com</p><p>Twitter：@your-handle</p></div>';wrapper.appendChild(sidebar)})
-
 </html>
