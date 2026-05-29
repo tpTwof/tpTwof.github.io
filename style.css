@@ -1,39 +1,4 @@
-/* ===== 全局样式（所有页面共享） ===== */
-body {
-    box-sizing: border-box;
-    min-width: 200px;
-    margin: 0;
-    font-size: 17px;
-    font-family: 'SF Pro Text', 'Inter', 'Helvetica Neue', system-ui, -apple-system, sans-serif;
-    line-height: 1.47;
-    color: #1d1d1f;
-    letter-spacing: -0.374px;
-    -webkit-font-smoothing: antialiased;
-}
-
-a {
-    color: #0066cc;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: #f5f5f7;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #d2d2d7;
-    border-radius: 9999px;
-}
-
-::selection {
-    background: #0066cc;
-    color: #fff;
-}
+/* 全局样式已清空 — Gmeek 文章页模板会将 style 字段作为裸文本注入，
+   不包裹 <style> 标签，导致 CSS 显示为页面文字。
+   全局样式（scrollbar、selection 等）已移至 indexStyle.css。
+   文章页使用 Gmeek 内置默认样式。 */

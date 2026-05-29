@@ -1,5 +1,11 @@
 /* ===== 首页样式：经典左右双栏布局 ===== */
 
+/* 滚动条和文字选择样式 */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #f5f5f7; }
+::-webkit-scrollbar-thumb { background: #d2d2d7; border-radius: 9999px; }
+::selection { background: #0066cc; color: #fff; }
+
 /* 隐藏 Gmeek 默认头部/底部（首页使用自定义布局） */
 #header { display: none; }
 #footer { display: none; }
