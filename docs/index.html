@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    
     <link rel="icon" href="https://github.githubassets.com/favicons/favicon.svg"><script>
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
@@ -16,184 +17,160 @@
 <meta property="og:url" content="https://tpTwof.github.io">
 <meta property="og:image" content="https://github.githubassets.com/favicons/favicon.svg">
 <title>tpTwof's Blog</title>
+
 </head>
 <style>
-::-webkit-scrollbar{width:8px}
-::-webkit-scrollbar-track{background:#1a1a1a}
-::-webkit-scrollbar-thumb{background:#444;border-radius:9999px}
-::selection{background:#a54a52;color:#fff}
-html,body{overflow-x:hidden}
-body{box-sizing:border-box;min-width:200px;margin:0;font-size:17px;font-family:'SF Pro Text','Inter','Helvetica Neue',system-ui,-apple-system,sans-serif;line-height:1.47;color:#1d1d1f;letter-spacing:-.374px;-webkit-font-smoothing:antialiased;background:#141420}
-#content{max-width:100%!important;margin:0!important;padding:0!important;overflow:visible!important}
-a{color:#a54a52;text-decoration:none}a:hover{text-decoration:underline}
-#header,#footer{display:none}
-.profile-section{display:none}
-.SideNav{min-width:auto}.SideNav-icon{margin-right:16px}.SideNav-item .Label{color:#fff;margin-left:4px}
-.d-flex{min-width:0}.listTitle{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;max-width:100%}
-.listLabels{white-space:nowrap;display:flex}.listLabels object{max-height:16px;max-width:24px}
-@media(max-width:600px){.LabelTime{display:none}}
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
 
-.layout-wrapper{display:flex;min-height:100vh;width:66.67%;margin:0 auto}
-.left-sidebar{width:25%;height:100vh;background:#a54a52;display:flex;flex-direction:column;position:sticky;top:0;overflow-y:auto}
-.sidebar-header{padding:50px 30px 40px;text-align:center}
-.sidebar-avatar{width:120px;height:120px;border-radius:50%;object-fit:cover;margin-bottom:20px;border:4px solid rgba(255,255,255,.25);box-shadow:0 4px 20px rgba(0,0,0,.2)}
-.sidebar-title{font-size:26px;font-weight:700;color:#fff;margin:0 0 6px;text-transform:uppercase;letter-spacing:1px}
-.sidebar-subtitle{font-size:15px;color:rgba(255,255,255,.6);margin:0;font-style:italic;font-weight:300}
-.sidebar-nav{flex:1;padding:0}
-.nav-item{display:flex;align-items:center;gap:14px;padding:16px 30px;color:rgba(255,255,255,.85);text-decoration:none;font-size:15px;font-weight:500;transition:all .25s ease;border-bottom:1px solid rgba(255,255,255,.12)}
-.nav-item:first-child{border-top:1px solid rgba(255,255,255,.12)}
-.nav-item:hover{background:rgba(255,255,255,.08);color:#fff;text-decoration:none}
-.nav-item.active{background:#fff;color:#a54a52}
-.nav-item svg{width:20px;height:20px;flex-shrink:0}
-.sidebar-footer{padding:24px 30px 30px}
-.social-links{display:flex;justify-content:center;gap:10px;margin-bottom:16px;flex-wrap:wrap}
-.social-link{display:flex;align-items:center;justify-content:center;width:38px;height:38px;background:rgba(0,0,0,.2);color:#fff;transition:all .25s ease}
-.social-link:hover{background:rgba(255,255,255,.2);color:#fff;text-decoration:none;transform:translateY(-2px)}
-.social-link svg{width:18px;height:18px}
-.sidebar-copyright{text-align:center}
-.sidebar-copyright p{font-size:11px;color:rgba(255,255,255,.45);margin:0}
-.sidebar-copyright a{color:rgba(255,255,255,.65);text-decoration:none}
-.sidebar-copyright a:hover{color:#fff}
-.main-area{width:75%;min-height:100vh;background:linear-gradient(160deg,#1a1a24 0%,#1e1e2e 30%,#1a1a24 60%,#141420 100%);position:relative}
-.main-area::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.45)}
-.main-content-wrapper{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:80px 50px}
-.page-header{text-align:center;margin-bottom:50px}
-.page-title{font-size:42px;font-weight:700;color:#fff;margin:0 0 18px;letter-spacing:-.5px}
-.title-underline{width:50px;height:3px;background:#a54a52;margin:0 auto 22px}
-.page-intro{font-size:17px;color:rgba(255,255,255,.75);margin:0 auto;max-width:600px;line-height:1.7}
-.content-section{margin-bottom:32px}
-.featured-card{margin-bottom:30px}
-.featured-card img{width:100%;border-radius:8px;display:block}
-.featured-card .card-caption{color:#fff;font-weight:600;font-size:18px;margin:14px 0 0}
-.about-content{display:flex;flex-direction:column;gap:30px}
-.about-section{padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,.08)}
-.about-section:last-child{border-bottom:none;padding-bottom:0}
-.about-section h3{font-size:18px;font-weight:600;color:#fff;margin:0 0 12px}
-.about-section p{font-size:15px;color:rgba(255,255,255,.7);line-height:1.75;margin:0}
-.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px}
-.skill-item{background:rgba(255,255,255,.08);padding:14px 18px;border-radius:6px;text-align:center;font-size:14px;color:rgba(255,255,255,.85);font-weight:500;border:1px solid rgba(255,255,255,.06);transition:all .2s}
-.skill-item:hover{background:rgba(255,255,255,.14)}
-.works-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:24px}
-.work-item{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;overflow:hidden;transition:all .3s}
-.work-item:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,.4)}
-.work-image{width:100%;height:160px;object-fit:cover;background:rgba(255,255,255,.05)}
-.work-info{padding:18px}
-.work-title{font-size:17px;font-weight:600;color:#fff;margin:0 0 8px}
-.work-desc{font-size:14px;color:rgba(255,255,255,.6);margin:0;line-height:1.5}
-.contact-form{max-width:500px;margin:0 auto}
-.form-group{margin-bottom:22px}
-.form-label{display:block;font-size:14px;font-weight:600;color:rgba(255,255,255,.85);margin-bottom:8px}
-.form-input,.form-textarea{width:100%;padding:14px 18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:6px;font-size:15px;color:#fff;transition:border-color .2s;box-sizing:border-box}
-.form-input:focus,.form-textarea:focus{outline:none;border-color:#a54a52}
-.form-input::placeholder,.form-textarea::placeholder{color:rgba(255,255,255,.3)}
-.form-textarea{min-height:130px;resize:vertical}
-.submit-btn{background:#a54a52;color:#fff;border:none;padding:14px 36px;border-radius:6px;font-size:16px;font-weight:600;cursor:pointer;transition:background .2s}
-.submit-btn:hover{background:#b8555d}
-.post-section{margin-bottom:36px}
-.post-section .section-title{font-size:22px;font-weight:600;color:#fff;margin:0 0 20px}
-.post-section .SideNav{border-radius:8px;overflow:hidden;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06)}
-.post-section .SideNav-item{display:block;padding:16px 22px;border-bottom:1px solid rgba(255,255,255,.06);transition:background .2s;text-decoration:none}
-.post-section .SideNav-item:hover{background:rgba(255,255,255,.08);text-decoration:none}
-.post-section .SideNav-item:last-child{border-bottom:none}
-.post-item-content{display:flex;flex-direction:column;gap:8px}
-.post-item-content .listTitle{font-size:17px;font-weight:600;color:#fff}
-.post-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.post-meta .Label{border-radius:9999px;padding:3px 10px;font-size:12px;font-weight:500}
-.post-meta .LabelTime{font-size:12px;color:rgba(255,255,255,.45)}
-@media(max-width:1200px){.layout-wrapper{width:85%}}
-@media(max-width:768px){.layout-wrapper{flex-direction:column;width:100%}.left-sidebar{width:100%;min-height:auto;height:auto;position:relative;overflow-y:visible}.sidebar-header{padding:30px 20px}.sidebar-avatar{width:80px;height:80px}.sidebar-nav{display:flex;flex-wrap:wrap;padding:12px;gap:6px}.nav-item{flex:1;min-width:120px;padding:12px 16px;border:none;border-radius:6px;background:rgba(255,255,255,.1);justify-content:center;font-size:13px}.nav-item:first-child{border-top:none}.nav-item.active{background:#fff}.main-area{width:100%}.main-content-wrapper{padding:30px 16px}.page-title{font-size:30px}.works-grid{grid-template-columns:1fr}}
 </style>
 
+<style>
+.avatar {transition: 0.8s;width:64px;height:64px;object-fit: cover;}
+.avatar:hover{transform: scale(1.15) rotate(360deg);}
+.title-left a{color:inherit;text-decoration:none;vertical-align: bottom;font-size:40px;font-weight: bold;font-family:Monaco;margin-left:8px;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right button{margin-right:8px;padding:16px;}
+.title-right .circle{padding: 14px 16px;}
+
+.SideNav{min-width: 360px;}
+.SideNav-icon{margin-right: 16px}
+.SideNav-item .Label{color: #fff;margin-left:4px;}
+.d-flex{min-width:0;}
+.listTitle{overflow:hidden;white-space:nowrap;text-overflow: ellipsis;max-width: 100%;}
+.listLabels{white-space:nowrap;display:flex;}
+.listLabels object{max-height:16px;max-width:24px;}
+
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .avatar {width:40px;height:40px;}
+    .blogTitle{display:none;}
+    #buttonRSS{display:none;}
+    .LabelTime{display:none;}
+}
+</style>
+<style>::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:#f1f1f1}::-webkit-scrollbar-thumb{background:#ccc;border-radius:9999px}::selection{background:#a54a52;color:#fff}.Header,.Footer,#header,#footer,.position-relative{display:none!important}html,body{margin:0!important;padding:0!important;background-color:#f6f8fa!important;width:100%!important}#content,.markdown-body{max-width:100vw!important;width:100vw!important;margin:0!important;padding:0!important;border:none!important;display:block!important;background:transparent!important;overflow:visible!important}.layout-wrapper{display:flex;width:66.67vw!important;margin:0 auto!important;min-height:100vh;overflow:visible!important}.left-sidebar{width:25%;height:100vh!important;position:-webkit-sticky!important;position:sticky!important;top:0!important;align-self:flex-start!important;overflow-y:auto;background:#a54a52;flex-shrink:0;z-index:99}.sidebar-header{padding:50px 30px 40px;text-align:center}.sidebar-avatar{width:120px;height:120px;border-radius:50%;object-fit:cover;margin-bottom:20px;border:4px solid rgba(255,255,255,.25);box-shadow:0 4px 20px rgba(0,0,0,0.2)}.sidebar-title{font-size:26px;font-weight:700;color:#fff;margin:0 0 6px;text-transform:uppercase;letter-spacing:1px}.sidebar-subtitle{font-size:15px;color:rgba(255,255,255,.6);margin:0;font-style:italic;font-weight:300}.sidebar-nav{flex:1;padding:0}.nav-item{display:flex;align-items:center;gap:14px;padding:16px 30px;color:rgba(255,255,255,.85);text-decoration:none;font-size:15px;font-weight:500;transition:all .25s ease;border-bottom:1px solid rgba(255,255,255,.12)}.nav-item:first-child{border-top:1px solid rgba(255,255,255,.12)}.nav-item:hover{background:rgba(255,255,255,.08);color:#fff;text-decoration:none}.nav-item.active{background:#fff;color:#a54a52}.nav-item svg{width:20px;height:20px;flex-shrink:0}.sidebar-footer{padding:24px 30px 30px}.social-links{display:flex;justify-content:center;gap:10px;margin-bottom:16px;flex-wrap:wrap}.social-link{display:flex;align-items:center;justify-content:center;width:38px;height:38px;background:rgba(0,0,0,0.1);color:#fff;transition:all .25s ease}.social-link:hover{background:rgba(255,255,255,0.2);color:#fff;text-decoration:none;transform:translateY(-2px)}.social-link svg{width:18px;height:18px}.sidebar-copyright{text-align:center}.sidebar-copyright p{font-size:11px;color:rgba(255,255,255,.45);margin:0}.sidebar-copyright a{color:rgba(255,255,255,.65);text-decoration:none}.sidebar-copyright a:hover{color:#fff}.main-area{width:75%;min-height:100vh;background:#ffffff!important;position:relative;box-shadow:0 0 20px rgba(0,0,0,0.05)}.main-content-wrapper{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:80px 50px}.page-header{text-align:center;margin-bottom:50px}.page-title{font-size:42px;font-weight:700;color:#24292e!important;margin:0 0 18px;letter-spacing:-.5px}.title-underline{width:50px;height:3px;background:#a54a52;margin:0 auto 22px}.page-intro{font-size:17px;color:#57606a!important;margin:0 auto;max-width:600px;line-height:1.7}.content-section{margin-bottom:32px}.featured-card{margin-bottom:30px}.featured-card img{width:100%;border-radius:8px;display:block;background:#eee}.featured-card .card-caption{color:#24292e!important;font-weight:600;font-size:18px;margin:14px 0 0}.about-content{display:flex;flex-direction:column;gap:30px}.about-section{padding-bottom:24px;border-bottom:1px solid #eee}.about-section:last-child{border-bottom:none;padding-bottom:0}.about-section h3{font-size:18px;font-weight:600;color:#24292e!important;margin:0 0 12px}.about-section p{font-size:15px;color:#57606a!important;line-height:1.75;margin:0}.post-section .section-title{font-size:22px;font-weight:600;color:#24292e!important;margin:0 0 20px}.post-section .SideNav{border-radius:8px;overflow:hidden;background:#fff;border:1px solid #e1e4e8}.post-section .SideNav-item{display:block;padding:16px 22px;border-bottom:1px solid #e1e4e8;transition:background .2s;text-decoration:none}.post-section .SideNav-item:hover{background:#f6f8fa;text-decoration:none}.post-item-content .listTitle{font-size:17px;font-weight:600;color:#24292e!important}.LabelTime{font-size:12px;color:#57606a!important}.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px}.skill-item{background:rgba(164,74,82,0.08);padding:14px 18px;border-radius:6px;text-align:center;font-size:14px;color:#a54a52;font-weight:500;border:1px solid rgba(164,74,82,0.15);transition:all .2s}.skill-item:hover{background:rgba(164,74,82,0.15)}@media(max-width:1200px){.layout-wrapper{width:90vw!important}}@media(max-width:768px){.layout-wrapper{flex-direction:column;width:100vw!important;margin-left:0!important}.left-sidebar{width:100%;min-height:auto;height:auto;position:relative!important;overflow-y:visible}.sidebar-header{padding:30px 20px}.sidebar-avatar{width:80px;height:80px}.sidebar-nav{display:flex;flex-wrap:wrap;padding:12px;gap:6px}.nav-item{flex:1;min-width:120px;padding:12px 16px;border:none;border-radius:6px;background:rgba(255,255,255,0.1);justify-content:center}.nav-item.active{background:#fff;color:#a54a52}.main-area{width:100%}.main-content-wrapper{padding:30px 16px}.page-title{font-size:30px}}</style>
+
+
 <body>
-    <div class="layout-wrapper">
-        <aside class="left-sidebar">
-            <div class="sidebar-header">
-                <img src="https://github.githubassets.com/favicons/favicon.svg" alt="avatar" class="sidebar-avatar">
-                <h1 class="sidebar-title">tpTwof</h1>
-                <p class="sidebar-subtitle">Developer</p>
-            </div>
-            <nav class="sidebar-nav">
-                <a href="#" class="nav-item active" data-page="about">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                    <span>About Me</span>
-                </a>
-                <a href="#skills" class="nav-item" data-page="skills">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19.14 12.94c.04-.31.06-.63.06-.94 0-.31-.02-.63-.06-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
-                    <span>What I'm good at</span>
-                </a>
-                <a href="#works" class="nav-item" data-page="works">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>
-                    <span>My Work</span>
-                </a>
-                <a href="#contact" class="nav-item" data-page="contact">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                    <span>Contact Me</span>
-                </a>
-            </nav>
-            <div class="sidebar-footer">
-                <div class="social-links">
-                    <a href="#" class="social-link" title="Facebook"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-                    <a href="#" class="social-link" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
-                    <a href="#" class="social-link" title="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 6a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg></a>
-                    <a href="https://github.com/tpTwof" target="_blank" class="social-link" title="GitHub"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg></a>
-                    <a href="https://tpTwof.github.io/rss.xml" target="_blank" class="social-link" title="RSS"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19.01 7.38 20 6.18 20C4.98 20 4 19.01 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 5.17 17.6l-1.46-1.46a7.07 7.07 0 0 0-3.71-3.71V10.1z"/></svg></a>
-                </div>
-                <div class="sidebar-copyright">
-                    <p>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></p>
-                </div>
-            </div>
-        </aside>
-
-        <main class="main-area">
-            <div class="main-content-wrapper">
-                <div class="page-header">
-                    <h1 class="page-title">About Me</h1>
-                    <div class="title-underline"></div>
-                    <p class="page-intro">Developer · Designer · Lifelong Learner — sharing insights on code, design, and creative technology.</p>
-                </div>
-
-                <section id="about-section" class="content-section">
-                    <div class="featured-card">
-                        <img src="https://github.githubassets.com/favicons/favicon.svg" alt="Featured work" style="width:100%;border-radius:8px">
-                        <p class="card-caption">Reflux HTML CSS Template</p>
-                    </div>
-                    <div class="about-content">
-                        <div class="about-section">
-                            <h3>About Me</h3>
-                            <p>热爱技术与设计，专注于Web开发、开源项目和个人成长。在这里分享我的学习笔记、项目经验和生活感悟。</p>
-                        </div>
-                    </div>
-                </section>
-
-                <section id="skills-section" class="content-section" style="display:none">
-                    <div class="about-section">
-                        <h3>What I'm good at</h3>
-                        <div class="skills-grid">
-                            <span class="skill-item">JavaScript</span><span class="skill-item">TypeScript</span>
-                            <span class="skill-item">React</span><span class="skill-item">Vue</span>
-                            <span class="skill-item">Node.js</span><span class="skill-item">Python</span>
-                            <span class="skill-item">Git</span><span class="skill-item">UI/UX</span>
-                        </div>
-                    </div>
-                </section>
-
-                <section id="works-section" class="content-section" style="display:none">
-                    <div class="works-grid"></div>
-                </section>
-
-                <section id="contact-section" class="content-section" style="display:none">
-                    <div class="contact-form">
-                        <div class="form-group"><label class="form-label">Name</label><input type="text" class="form-input" placeholder="Your name"></div>
-                        <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" placeholder="your@email.com"></div>
-                        <div class="form-group"><label class="form-label">Message</label><textarea class="form-textarea" placeholder="Your message..."></textarea></div>
-                        <button type="submit" class="submit-btn">Send Message</button>
-                    </div>
-                </section>
-
-                <div id="posts-container"></div>
-            </div>
-        </main>
+    <div id="header">
+<div class="title-left">
+    <img src="https://github.githubassets.com/favicons/favicon.svg" class="avatar circle" id="avatarImg" alt="avatar"><a class="blogTitle">tpTwof's Blog</a></div>
+<div class="title-right">
+    <a href="https://tpTwof.github.io/tag.html" id="buttonSearch" class="btn btn-invisible circle" title="搜索">
+        <svg class="octicon" width="16" height="16" >
+            <path id="pathSearch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    
+    <a href="https://tpTwof.github.io/rss.xml" target="_blank" id="buttonRSS" class="btn btn-invisible circle" title="RSS">
+        <svg class="octicon" width="16" height="16" >
+            <path id="pathRSS" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    <a class="btn btn-invisible circle" onclick="modeSwitch()" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+</div>
+</div>
+    <div id="content">
+<div style="margin-bottom: 16px;">Thoughts on code, design, and life</div>
+<nav class="SideNav border">
+<a class="SideNav-item d-flex flex-items-center flex-justify-between" href="post/wo-de-bi-sai.html">
+    <div class="d-flex flex-items-center">
+        <svg class="SideNav-icon octicon" style="width:16px;height:16px"><path class="svgTop0" d=""></path>
+        </svg>
+        <span class="listTitle">我的比赛</span>
     </div>
-    <script src="../indexScript.js"></script>
+    <div class="listLabels">
+        
+        <span class="Label LabelName" style="background-color:#aaaaaa"><object><a style="color:#fff" href="tag.html#works">works</a></object></span>
+        <span class="Label LabelTime" style="background-color:#333333">2026-05-30</span>
+    </div>
+</a><a class="SideNav-item d-flex flex-items-center flex-justify-between" href="post/wo-de-di-yi-pian-bo-ke.html">
+    <div class="d-flex flex-items-center">
+        <svg class="SideNav-icon octicon" style="width:16px;height:16px"><path class="svgTop0" d=""></path>
+        </svg>
+        <span class="listTitle">我的第一篇博客</span>
+    </div>
+    <div class="listLabels">
+        
+        <span class="Label LabelName" style="background-color:#aaaaaa"><object><a style="color:#fff" href="tag.html#blog">blog</a></object></span>
+        <span class="Label LabelTime" style="background-color:#333333">2026-05-28</span>
+    </div>
+</a>
+</nav>
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://tpTwof.github.io">tpTwof's Blog</a></div>
+<div id="footer2">
+    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if("2026-05-28"!=""){
+    var startSite=new Date("2026-05-28");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行 "+diffDay+" 天"+" • ";
+}
+</script></div>
 </body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'search': 'M15.7 13.3l-3.81-3.83A5.93 5.93 0 0 0 13 6c0-3.31-2.69-6-6-6S1 2.69 1 6s2.69 6 6 6c1.3 0 2.48-.41 3.47-1.11l3.83 3.81c.19.2.45.3.7.3.25 0 .52-.09.7-.3a.996.996 0 0 0 0-1.41v.01zM7 10.7c-2.59 0-4.7-2.11-4.7-4.7 0-2.59 2.11-4.7 4.7-4.7 2.59 0 4.7 2.11 4.7 4.7 0 2.59-2.11 4.7-4.7 4.7z', 'rss': 'M2.002 2.725a.75.75 0 0 1 .797-.699C8.79 2.42 13.58 7.21 13.974 13.201a.75.75 0 0 1-1.497.098 10.502 10.502 0 0 0-9.776-9.776.747.747 0 0 1-.7-.798ZM2.84 7.05h-.002a7.002 7.002 0 0 1 6.113 6.111.75.75 0 0 1-1.49.178 5.503 5.503 0 0 0-4.8-4.8.75.75 0 0 1 .179-1.489ZM2 13a1 1 0 1 1 2 0 1 1 0 0 1-2 0Z', 'upload': 'M2.75 14A1.75 1.75 0 0 1 1 12.25v-2.5a.75.75 0 0 1 1.5 0v2.5c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25v-2.5a.75.75 0 0 1 1.5 0v2.5A1.75 1.75 0 0 1 13.25 14Z M11.78 4.72a.749.749 0 1 1-1.06 1.06L8.75 3.811V9.5a.75.75 0 0 1-1.5 0V3.811L5.28 5.78a.749.749 0 1 1-1.06-1.06l3.25-3.25a.749.749 0 0 1 1.06 0l3.25 3.25Z', 'post': 'M0 3.75C0 2.784.784 2 1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 14H1.75A1.75 1.75 0 0 1 0 12.25Zm1.75-.25a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25ZM3.5 6.25a.75.75 0 0 1 .75-.75h7a.75.75 0 0 1 0 1.5h-7a.75.75 0 0 1-.75-.75Zm.75 2.25h4a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1 0-1.5Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathSearch").setAttribute("d",IconList["search"]);
+document.getElementById("pathRSS").setAttribute("d",IconList["rss"]);
+iconTOP=document.getElementsByClassName("svgTop1");
+iconPost=document.getElementsByClassName("svgTop0");
+for(var i=0;i<iconTOP.length;i++){
+    iconTOP[i].setAttribute("d",IconList["upload"]);
+    iconTOP[i].parentNode.style.color="red";
+}
+for(var i=0;i<iconPost.length;i++){
+    iconPost[i].setAttribute("d",IconList["post"]);
+}
+
+
+
+
+</script>
+<script>document.addEventListener('DOMContentLoaded', function () { var content = document.getElementById('content'); var existingLayout = document.querySelector('.layout-wrapper'); if (!existingLayout && content) { var layoutWrapper = document.createElement('div'); layoutWrapper.className = 'layout-wrapper'; var leftSidebar = document.createElement('aside'); leftSidebar.className = 'left-sidebar'; leftSidebar.innerHTML = '<div class="sidebar-header">' + '<img src="https://github.githubassets.com/favicons/favicon.svg" alt="avatar" class="sidebar-avatar">' + '<h1 class="sidebar-title">tpTwof</h1>' + '<p class="sidebar-subtitle">Developer</p>' + '</div>' + '<nav class="sidebar-nav">' + '<a href="#" class="nav-item active" data-page="about">' + '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>' + '<span>About Me</span></a>' + '<a href="#skills" class="nav-item" data-page="skills">' + '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19.14 12.94c.04-.31.06-.63.06-.94 0-.31-.02-.63-.06-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>' + '<span>What I\'m good at</span></a>' + '<a href="#works" class="nav-item" data-page="works">' + '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>' + '<span>My Work</span></a>' + '<a href="#contact" class="nav-item" data-page="contact">' + '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>' + '<span>Contact Me</span></a>' + '</nav>' + '<div class="sidebar-footer">' + '<div class="social-links">' + '<a href="#" class="social-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>' + '<a href="#" class="social-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>' + '<a href="#" class="social-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 6a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg></a>' + '<a href="https://github.com/tpTwof" target="_blank" class="social-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg></a>' + '<a href="https://tpTwof.github.io/rss.xml" target="_blank" class="social-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19.01 7.38 20 6.18 20C4.98 20 4 19.01 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 5.17 17.6l-1.46-1.46a7.07 7.07 0 0 0-3.71-3.71V10.1z"/></svg></a>' + '</div>' + '<div class="sidebar-copyright"><p>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></p></div>' + '</div>'; var mainArea = document.createElement('main'); mainArea.className = 'main-area'; mainArea.innerHTML = '<div class="main-content-wrapper">' + '<div class="page-header">' + '<h1 class="page-title">About Me</h1>' + '<div class="title-underline"></div>' + '<p class="page-intro">Developer · Designer · Lifelong Learner</p>' + '</div>' + '<section id="about-section" class="content-section">' + '<div class="about-content">' + '<div class="about-section"><h3>About Me</h3><p>热爱技术与设计，专注于Web开发、开源项目和个人成长。在这里分享我的学习笔记、项目经验和生活感悟。</p></div>' + '</div></section>' + '<section id="skills-section" class="content-section" style="display:none">' + '<div class="about-section"><h3>What I\'m good at</h3>' + '<div class="skills-grid">' + '<span class="skill-item">JavaScript</span><span class="skill-item">TypeScript</span>' + '<span class="skill-item">React</span><span class="skill-item">Vue</span>' + '<span class="skill-item">Node.js</span><span class="skill-item">Python</span>' + '<span class="skill-item">Git</span><span class="skill-item">UI/UX</span>' + '</div></div></section>' + '<section id="works-section" class="content-section" style="display:none"><div class="works-grid"></div></section>' + '<section id="contact-section" class="content-section" style="display:none">' + '<div class="contact-form">' + '<div class="form-group"><label class="form-label">Name</label><input type="text" class="form-input" placeholder="Your name"></div>' + '<div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" placeholder="your@email.com"></div>' + '<div class="form-group"><label class="form-label">Message</label><textarea class="form-textarea" placeholder="Your message..."></textarea></div>' + '<button type="submit" class="submit-btn">Send Message</button>' + '</div></section>' + '</div>'; layoutWrapper.appendChild(leftSidebar); layoutWrapper.appendChild(mainArea); content.innerHTML = ''; content.appendChild(layoutWrapper); } if (!document.querySelector('.layout-wrapper')) return; var pageMeta = { 'about': { title: 'About Me', intro: 'Developer · Designer · Lifelong Learner — sharing insights on code, design, and creative technology.' }, 'skills': { title: "What I'm good at", intro: 'Technologies and tools I use to bring ideas to life.' }, 'works': { title: 'My Work', intro: 'Selected projects and open-source contributions.' }, 'contact': { title: 'Contact Me', intro: 'Have a question or want to work together? Reach out.' } }; var navItems = document.querySelectorAll('.nav-item'); var sections = document.querySelectorAll('.content-section'); var pageTitle = document.querySelector('.page-title'); var pageIntro = document.querySelector('.page-intro'); function switchToPage(page) { navItems.forEach(function (n) { n.classList.remove('active'); }); var activeNav = document.querySelector('.nav-item[data-page="' + page + '"]'); if (activeNav) activeNav.classList.add('active'); if (pageTitle && pageMeta[page]) pageTitle.textContent = pageMeta[page].title; if (pageIntro && pageMeta[page]) pageIntro.textContent = pageMeta[page].intro; sections.forEach(function (s) { s.style.display = 'none'; }); var el = document.getElementById(page + '-section'); if (el) el.style.display = 'block'; } navItems.forEach(function (item) { item.addEventListener('click', function (e) { e.preventDefault(); switchToPage(this.getAttribute('data-page')); }); }); var xhr = new XMLHttpRequest(); xhr.open('GET', 'postList.json', true); xhr.onload = function () { if (xhr.status !== 200) return; try { renderSections(JSON.parse(xhr.responseText)); } catch (e) {} }; xhr.send(); function renderSections(data) { var labelMap = { 'blog': 'about', 'works': 'works' }; Object.keys(labelMap).forEach(function (tag) { var posts = []; Object.keys(data).forEach(function (key) { if (key === 'labelColorDict') return; var post = data[key]; if (post.labels && post.labels.some(function (l) { return l.toLowerCase() === tag; })) { posts.push(post); } }); if (posts.length === 0) return; var targetId = labelMap[tag] + '-section'; var target = document.getElementById(targetId); if (!target) return; var sectionDiv = document.createElement('div'); sectionDiv.className = 'post-section'; sectionDiv.innerHTML = '<h2 class="section-title">Posts</h2>'; var listEl = document.createElement('div'); listEl.className = 'SideNav'; posts.forEach(function (post) { var item = document.createElement('a'); item.href = post.postUrl; item.className = 'SideNav-item'; item.innerHTML = '<div class="post-item-content"><span class="listTitle">' + post.postTitle + '</span><span class="LabelTime">' + post.createdDate + '</span></div>'; listEl.appendChild(item); }); sectionDiv.appendChild(listEl); target.appendChild(sectionDiv); }); } });</script>
+
 </html>
