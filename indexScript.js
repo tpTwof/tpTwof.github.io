@@ -99,21 +99,26 @@ document.addEventListener('DOMContentLoaded', function () {
     xhr.open('GET', 'postList.json', true);
     xhr.onload = function () {
         if (xhr.status === 200) {
-            var postList = JSON.parse(xhr.responseText);
-            renderSections(postList);
+            var data = JSON.parse(xhr.responseText);
+            renderSections(data);
         }
     };
     xhr.send();
 
-    function renderSections(postList) {
+    function renderSections(data) {
         var container = document.getElementById('posts-container');
         if (!container) return;
 
+        var labelColorDict = data.labelColorDict || {};
         var sections = {};
-        postList.forEach(function (post) {
+
+        // postList.json 是对象而非数组，遍历其键
+        Object.keys(data).forEach(function (key) {
+            if (key === 'labelColorDict') return;
+            var post = data[key];
             if (post.labels && post.labels.length > 0) {
-                post.labels.forEach(function (label) {
-                    var tagName = label.name.toLowerCase();
+                post.labels.forEach(function (labelName) {
+                    var tagName = labelName.toLowerCase();
                     if (!sections[tagName]) {
                         sections[tagName] = [];
                     }
@@ -133,13 +138,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
             sections[tag].forEach(function (post) {
                 var item = document.createElement('a');
-                item.href = post.url;
+                item.href = post.postUrl;
                 item.className = 'SideNav-item';
-                item.innerHTML = '<div class="post-item-content"><span class="listTitle">' + post.title + '</span><div class="post-meta">' +
-                    post.labels.map(function(l) {
-                        return '<span class="Label" style="background-color:' + l.color + '20;color:' + l.color + '">' + l.name + '</span>';
+                item.innerHTML = '<div class="post-item-content"><span class="listTitle">' + post.postTitle + '</span><div class="post-meta">' +
+                    post.labels.map(function(labelName) {
+                        var color = labelColorDict[labelName] || '#999';
+                        return '<span class="Label" style="background-color:' + color + '20;color:' + color + '">' + labelName + '</span>';
                     }).join(' ') +
-                    '<span class="LabelTime">' + post.date + '</span></div></div>';
+                    '<span class="LabelTime">' + post.createdDate + '</span></div></div>';
                 postListEl.appendChild(item);
             });
 
