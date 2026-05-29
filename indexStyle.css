@@ -5,7 +5,8 @@
 ::-webkit-scrollbar-thumb{background:#444;border-radius:9999px}
 ::selection{background:#a54a52;color:#fff}
 
-html,body{background:#141420}
+html,body{overflow-x:hidden;background:#141420}
+#content{max-width:100%!important;margin:0!important;padding:0!important;overflow:visible!important}
 
 #header,#footer{display:none}
 .profile-section{display:none}
