@@ -14,17 +14,20 @@ html,body{background:#141420}
 .layout-wrapper{
     display:flex;
     min-height:100vh;
-    width:66.67%;
+    width:50%;
     margin:0 auto
 }
 
 /* ==================== Left Sidebar ==================== */
 .left-sidebar{
     width:25%;
-    min-height:100vh;
+    height:100vh;
     background:#a54a52;
     display:flex;
-    flex-direction:column
+    flex-direction:column;
+    position:sticky;
+    top:0;
+    overflow-y:auto
 }
 
 /* ---------- Profile ---------- */
@@ -263,7 +266,8 @@ html,body{background:#141420}
 @media(max-width:768px){
     .layout-wrapper{flex-direction:column;width:100%}
     .left-sidebar{
-        width:100%;min-height:auto;
+        width:100%;min-height:auto;height:auto;
+        position:relative;
         overflow-y:visible
     }
     .sidebar-header{padding:30px 20px}
