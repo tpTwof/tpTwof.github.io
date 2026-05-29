@@ -21,6 +21,9 @@ document.addEventListener('DOMContentLoaded', function () {
             '<a href="#" class="nav-item active" data-page="about">' +
             '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>' +
             '<span>About Me</span></a>' +
+            '<a href="#blog" class="nav-item" data-page="blog">' +
+            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 2l5 5h-5V4zM6 20V4h5v7h7v9H6z"/></svg>' +
+            '<span>Blog</span></a>' +
             '<a href="#skills" class="nav-item" data-page="skills">' +
             '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19.14 12.94c.04-.31.06-.63.06-.94 0-.31-.02-.63-.06-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>' +
             '<span>What I\'m good at</span></a>' +
@@ -55,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
             '<div class="about-content">' +
             '<div class="about-section"><h3>About Me</h3><p>热爱技术与设计，专注于Web开发、开源项目和个人成长。在这里分享我的学习笔记、项目经验和生活感悟。</p></div>' +
             '</div></section>' +
+            '<section id="blog-section" class="content-section" style="display:none"></section>' +
             '<section id="skills-section" class="content-section" style="display:none">' +
             '<div class="about-section"><h3>What I\'m good at</h3>' +
             '<div class="skills-grid">' +
@@ -95,7 +99,11 @@ document.addEventListener('DOMContentLoaded', function () {
     var pageMeta = {
         'about': {
             title: 'About Me',
-            intro: 'Developer · Designer · Lifelong Learner — sharing insights on code, design, and creative technology.'
+            intro: 'Developer · Designer · Lifelong Learner — get to know me and my work.'
+        },
+        'blog': {
+            title: 'Blog',
+            intro: 'My thoughts, notes, and articles on technology and design.'
         },
         'skills': {
             title: "What I'm good at",
@@ -211,7 +219,7 @@ document.addEventListener('DOMContentLoaded', function () {
     xhr.send();
 
     function renderSections(data) {
-        var labelMap = { 'blog': 'about', 'works': 'works' };
+        var labelMap = { 'blog': 'blog', 'works': 'works' };
 
         Object.keys(labelMap).forEach(function (tag) {
             var posts = [];
