@@ -242,6 +242,9 @@ html,body{margin:0!important;padding:0!important;background-color:#f6f8fa!import
     white-space:pre;
     color:#fff
 }
+.post-detail-content .markdown-body pre code *{
+    color:#fff!important
+}
 .post-detail-content .markdown-body code{
     color:#fff;
     background:rgba(0,0,0,0.3);
