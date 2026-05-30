@@ -1,0 +1,466 @@
+
+
+### 1. 基础万能模板 (Fast I/O)
+若 $N \ge 5 \cdot 10^5$，建议务必关闭流同步。
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef pair<int, int> pii;
+#define pb push_back
+#define all(x) (x).begin(), (x).end()
+#define fi first
+#define se second
+
+void solve() {
+    // 你的逻辑
+}
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr); cout.tie(nullptr);
+    int t = 1;
+    cin >> t; 
+    while(t--) solve();
+    return 0;
+}
+```
+
+---
+
+### 2. 数论基础 (Math)
+
+#### 快速幂与逆元 (Modular Exponentiation & Inverse)
+用于处理结果极大需要取模的情况。根据费马小定理，若 $M$ 为质数， $a^{M-2}$ 即为 $a$ 的逆元。
+```cpp
+ll qpow(ll a, ll b, ll m) {
+    ll res = 1;
+    a %= m;
+    while (b > 0) {
+        if (b & 1) res = res * a % m;
+        a = a * a % m;
+        b >>= 1;
+    }
+    return res;
+}
+// 逆元: qpow(a, m - 2, m);
+```
+
+#### 埃氏筛 (Prime Sieve)
+```cpp
+const int N = 1000005;
+bool is_prime[N];
+void sieve(int n) {
+    fill(is_prime, is_prime + n + 1, true);
+    is_prime[0] = is_prime[1] = false;
+    for (int p = 2; p * p <= n; p++) {
+        if (is_prime[p]) {
+            for (int i = p * p; i <= n; i += p) is_prime[i] = false;
+        }
+    }
+}
+```
+
+---
+
+### 3. 数据结构 (Data Structures)
+
+#### 并查集 (DSU)
+用于维护连通性，判断两个点是否在同一个集合中。
+```cpp
+
+class UnionFind {
+    vector<int> fa; // 代表元
+    vector<int> sz; // 集合大小
+
+public:
+    int cc;
+
+    UnionFind(int n) : fa(n), sz(n, 1), cc(n) {
+        for(int i = 0; i < n; i ++) fa[i] = i;
+    }
+
+    int find(int x) {
+        if (fa[x] != x) {
+            fa[x] = find(fa[x]);
+        }
+        return fa[x];
+    }
+
+    // 判断 x 和 y 是否在同一个集合
+    bool is_same(int x, int y) {
+        return find(x) == find(y);
+    }
+
+    bool merge(int from, int to) {
+        int x = find(from), y = find(to);
+        if (x == y) { // from 和 to 在同一个集合，不做合并
+            return false;
+        }
+        fa[x] = y; 
+        sz[y] += sz[x];
+        cc--; 
+        return true;
+    }
+
+    int get_size(int x) {
+        return sz[find(x)]; // 集合大小保存在代表元上
+    }
+};
+
+```
+
+#### 树状数组 (Fenwick Tree / BIT)
+解决 **“单点修改，区间查询”** 的神器。比线段树好写。
+```cpp
+template<typename T>
+class FenwickTree {
+    vector<T> tree;
+
+public:
+    // 使用下标 1 到 n
+    FenwickTree(int n) : tree(n + 1) {}
+
+    // a[i] 增加 val
+    // 1 <= i <= n
+    // 时间复杂度 O(log n)
+    void update(int i, T val) {
+        for (; i < tree.size(); i += i & -i) {
+            tree[i] += val;
+        }
+    }
+
+    // 求前缀和 a[1] + ... + a[i]
+    // 1 <= i <= n
+    // 时间复杂度 O(log n)
+    T pre(int i) const {
+        T res{};
+        for (; i > 0; i &= i - 1) {
+            res += tree[i];
+        }
+        return res;
+    }
+
+    // 求区间和 a[l] + ... + a[r]
+    // 1 <= l <= r <= n
+    // 时间复杂度 O(log n)
+    T query(int l, int r) const {
+        if (r < l) {
+            return 0;
+        }
+        return pre(r) - pre(l - 1);
+    }
+};
+```
+
+---
+
+### 4. 图论 (Graph Theory)
+
+#### Dijkstra (单源最短路)
+适用于 **边权为正** 的图。使用优先队列优化，复杂度 $O(E \log V)$。
+```cpp
+#include <iostream>
+#include <vector>
+#include <climits>
+using namespace std;
+int main() {
+    int n, m, p1, p2, val;
+    cin >> n >> m;
+
+    vector<vector<int>> grid(n + 1, vector<int>(n + 1, INT_MAX));
+    for(int i = 0; i < m; i++){
+        cin >> p1 >> p2 >> val;
+        grid[p1][p2] = val;
+    }
+
+    int start = 1;
+    int end = n;
+
+    // 存储从源点到每个节点的最短距离
+    std::vector<int> minDist(n + 1, INT_MAX);
+
+    // 记录顶点是否被访问过
+    std::vector<bool> visited(n + 1, false);
+
+    minDist[start] = 0;  // 起始点到自身的距离为0
+
+    for (int i = 1; i <= n; i++) { // 遍历所有节点
+
+        int minVal = INT_MAX;
+        int cur = 1;
+
+        // 1、选距离源点最近且未访问过的节点
+        for (int v = 1; v <= n; ++v) {
+            if (!visited[v] && minDist[v] < minVal) {
+                minVal = minDist[v];
+                cur = v;
+            }
+        }
+
+        visited[cur] = true;  // 2、标记该节点已被访问
+
+        // 3、第三步，更新非访问节点到源点的距离（即更新minDist数组）
+        for (int v = 1; v <= n; v++) {
+            if (!visited[v] && grid[cur][v] != INT_MAX && minDist[cur] + grid[cur][v] < minDist[v]) {
+                minDist[v] = minDist[cur] + grid[cur][v];
+            }
+        }
+
+    }
+
+    if (minDist[end] == INT_MAX) cout << -1 << endl; // 不能到达终点
+    else cout << minDist[end] << endl; // 到达终点最短路径
+
+}
+```
+
+#### Kruskal (最小生成树)
+配合并查集使用。
+```cpp
+long long mstKruskal(int n, vector<vector<int>>& edges) {
+    ranges::sort(edges, {}, [](const auto& e) { return e[2]; });
+
+    UnionFind uf(n);
+    long long sum_wt = 0;
+    for (auto& e : edges) {
+        int x = e[0], y = e[1], wt = e[2];
+        if (uf.merge(x, y)) {
+            sum_wt += wt;
+        }
+    }
+
+    if (uf.cc > 1) { // 图不连通
+        return LLONG_MAX;
+    }
+    return sum_wt;
+}
+
+```
+
+---
+
+### 5. 字符串 (Strings)
+
+#### KMP (字符串匹配)
+`nxt[i]` 表示前 `i` 个字符构成的子串中，最长公共真前后缀的长度。
+```cpp
+// 在文本串 text 中查找模式串 pattern，返回所有成功匹配的位置（pattern[0] 在 text 中的下标）
+vector<int> kmp(const string& text, const string& pattern) {
+    int m = pattern.size();
+    vector<int> pi(m);
+    int cnt = 0;
+    for (int i = 1; i < m; i++) {
+        char b = pattern[i];
+        while (cnt && pattern[cnt] != b) {
+            cnt = pi[cnt - 1];
+        }
+        if (pattern[cnt] == b) {
+            cnt++;
+        }
+        pi[i] = cnt;
+    }
+
+    vector<int> pos;
+    cnt = 0;
+    for (int i = 0; i < text.size(); i++) {
+        char b = text[i];
+        while (cnt && pattern[cnt] != b) {
+            cnt = pi[cnt - 1];
+        }
+        if (pattern[cnt] == b) {
+            cnt++;
+        }
+        if (cnt == m) {
+            pos.push_back(i - m + 1);
+            cnt = pi[cnt - 1];
+        }
+    }
+    return pos;
+}
+```
+
+---
+
+### 6. STL 核心技巧 (Cheatsheet)
+
+| 功能                  | STL 写法                                             | 备注                       |
+| :-------------------- | :--------------------------------------------------- | :------------------------- |
+| **排序**              | `sort(v.begin(), v.end());`                          | $O(N \log N)$              |
+| **去重**              | `v.erase(unique(all(v)), v.end());`                  | 必须先排序                 |
+| **二分查找($\ge x$)** | `auto it = lower_bound(all(v), x);`                  | 返回迭代器                 |
+| **二分查找($> x$)**   | `auto it = upper_bound(all(v), x);`                  | 返回迭代器                 |
+| **最大值/最小值**     | `*max_element(all(v))`                               | 返回值                     |
+| **优先级队列**        | `priority_queue<int, vector<int>, greater<int>> pq;` | 小根堆                     |
+| **集合操作**          | `s.count(x)`                                         | 返回 0 或 1 (检查是否存在) |
+| **下一个排列**        | `next_permutation(all(v))`                           | 暴力搜索常用               |
+
+---
+
+### 7. 避坑指南 (Checklist for 1300+)
+
+1.  **数据范围**：$N=10^5$ 看到累加直接开 `long long`。
+2.  **多组数据清空**：`vector` 要 `clear()`，数组要重置，注意 `DSU` 的初始化。
+3.  **边界值**：$N=1$、全相同元素、负数、$0$。
+4.  **二分答案**：如果题目求“最大化的最小值”或“最小化的最大值”，且具有单调性，立刻想二分答案。
+5.  **贪心策略**：按左端点排序、右端点排序、或者按差值排序。
+6.  **BFS vs DFS**：求最短步数用 BFS（带 `vis` 数组）；求连通块或路径用 DFS。
+
+
+
+
+## 网格图DFS
+
+```c++
+constexpr int DIRS[4][2] = {{0, -1}, {0, 1}, {-1, 0}, {1, 0}}; // 左右上下
+
+// 返回网格图 grid 每个连通块的大小
+// 时间复杂度 O(mn)
+vector<int> dfsGrid(vector<vector<char>>& grid) {
+    int m = grid.size(), n = grid[0].size();
+    vector vis(m, vector<int8_t>(n));
+
+    // 返回当前连通块的大小
+    auto dfs = [&](this auto&& dfs, int i, int j) -> int {
+        vis[i][j] = true;
+        int size = 1;
+        for (auto [dx, dy] : DIRS) {
+            int x = i + dx, y = j + dy;
+            // 这里 grid[x][y] == '.' 根据题意修改
+            if (0 <= x && x < m && 0 <= y && y < n && grid[x][y] == '.' && !vis[x][y]) {
+                size += dfs(x, y);
+            }
+        }
+        return size;
+    };
+
+    vector<int> comp_size;
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            if (grid[i][j] != '.' || vis[i][j]) { // grid[i][j] != '.' 根据题意修改
+                continue;
+            }
+            int size = dfs(i, j);
+            comp_size.push_back(size);
+        }
+    }
+    return comp_size;
+}
+
+```
+
+## 深搜DFS
+
+```cpp
+vector<int> solve(int n, vector<vector<int>>& edges) {
+    // 节点编号从 0 到 n-1
+    vector<vector<int>> g(n);
+    for (auto& e : edges) {
+        int x = e[0], y = e[1];
+        g[x].push_back(y);
+        g[y].push_back(x); // 无向图
+    }
+
+    vector<int8_t> vis(n);
+
+    // lambda 递归
+    auto dfs = [&](this auto&& dfs, int x) -> int {
+        vis[x] = true; // 避免重复访问节点
+        int size = 1;
+        for (int y : g[x]) {
+            if (!vis[y]) {
+                size += dfs(y);
+            }
+        }
+        return size;
+    };
+
+    // 计算每个连通块的大小
+    vector<int> ans;
+    for (int i = 0; i < n; i++) {
+        if (!vis[i]) { // i 没有访问过
+            int size = dfs(i);
+            ans.push_back(size);
+        }
+    }
+    return ans;
+}
+
+```
+
+## 拓扑排序
+
+```cpp
+// 返回有向无环图（DAG）的其中一个拓扑序
+// 如果图中有环，返回空列表
+// 节点编号从 0 到 n-1
+vector<int> topologicalSort(int n, vector<vector<int>>& edges) {
+    vector<vector<int>> g(n);
+    vector<int> in_deg(n);
+    for (auto& e : edges) {
+        int x = e[0], y = e[1];
+        g[x].push_back(y);
+        in_deg[y]++; // 统计 y 的先修课数量
+    }
+
+    queue<int> q;
+    for (int i = 0; i < n; i++) {
+        if (in_deg[i] == 0) { // 没有先修课，可以直接上
+            q.push(i); // 加入学习队列
+        }
+    }
+
+    vector<int> topo_order;
+    while (!q.empty()) {
+        int x = q.front();
+        q.pop();
+        topo_order.push_back(x);
+        for (int y : g[x]) {
+            in_deg[y]--; // 修完 x 后，y 的先修课数量减一
+            if (in_deg[y] == 0) { // y 的先修课全部上完
+                q.push(y); // 加入学习队列
+            }
+        }
+    }
+
+    if (topo_order.size() < n) { // 图中有环
+        return {};
+    }
+    return topo_order;
+}
+
+```
+
+## 树的直径
+
+```c++
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    int diameterOfBinaryTree(TreeNode* root) {
+        int ans = 0;
+        auto dfs = [&](this auto&&dfs, TreeNode* node) -> int {
+            if(node == nullptr) return -1;
+            int l = dfs(node->left) + 1;
+            int r = dfs(node->right) + 1;
+            ans = max(ans, l + r);
+            return max(l, r);
+        };
+        dfs(root);
+        return ans;
+    }
+};
+```
+
