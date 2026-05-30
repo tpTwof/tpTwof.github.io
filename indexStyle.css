@@ -119,9 +119,17 @@ html,body{margin:0!important;padding:0!important;background-color:#f6f8fa!import
 .main-area{
     width:75%;
     min-height:100vh;
-    background:#ffffff!important;
+    background:url('/images/back.jpg') center/cover no-repeat fixed;
     position:relative;
     box-shadow:0 0 20px rgba(0,0,0,0.05)
+}
+
+.main-area::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:rgba(255,255,255,0.8);
+    z-index:0
 }
 
 .main-content-wrapper{

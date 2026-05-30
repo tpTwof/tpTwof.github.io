@@ -51,8 +51,9 @@ jobs:
           cp -r ./* /opt/Gmeek/
           cd /opt/Gmeek/
           python Gmeek.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} --issue_number '${{ github.event.issue.number }}'
-          cp -a /opt/Gmeek/docs ${{ github.workspace }} 
-          cp -a /opt/Gmeek/backup ${{ github.workspace }} 
+          cp -a /opt/Gmeek/docs ${{ github.workspace }}
+          cp -a /opt/Gmeek/backup ${{ github.workspace }}
+          cp -r ${{ github.workspace }}/static/* ${{ github.workspace }}/docs/ 2>/dev/null || echo "no static assets"
           cp /opt/Gmeek/blogBase.json ${{ github.workspace }} 
           
       - name: update html
