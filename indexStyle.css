@@ -239,18 +239,59 @@ html,body{margin:0!important;padding:0!important;background-color:#f6f8fa!import
 .post-detail-content .markdown-body pre code{
     overflow-wrap:normal;
     word-break:normal;
-    white-space:pre
+    white-space:pre;
+    color:#fff
+}
+.post-detail-content .markdown-body code{
+    color:#fff;
+    background:rgba(0,0,0,0.3);
+    padding:2px 6px;
+    border-radius:4px
 }
 .post-detail-content .markdown-body table{
     display:block;
     overflow-x:auto;
-    max-width:100%
+    max-width:100%;
+    border-collapse:collapse
+}
+.post-detail-content .markdown-body table th,
+.post-detail-content .markdown-body table td{
+    border:1px solid rgba(255,255,255,0.2);
+    padding:10px 14px;
+    text-align:left;
+    color:#fff
+}
+.post-detail-content .markdown-body table th{
+    background:rgba(0,0,0,0.4);
+    font-weight:600
+}
+.post-detail-content .markdown-body table td{
+    background:rgba(0,0,0,0.2)
+}
+.post-detail-content .markdown-body table tr:hover td{
+    background:rgba(0,0,0,0.35)
+}
+.post-detail-content .markdown-body blockquote{
+    border-left:4px solid rgba(255,255,255,0.3);
+    padding:12px 20px;
+    margin:16px 0;
+    background:rgba(0,0,0,0.2);
+    border-radius:0 6px 6px 0;
+    color:rgba(255,255,255,0.85)
 }
 .post-detail-content .markdown-body hr{
     border:none;
     border-top:1px solid rgba(255,255,255,0.2);
     margin:24px 0;
     max-width:100%
+}
+.post-detail-content .markdown-body ul,
+.post-detail-content .markdown-body ol{
+    padding-left:24px
+}
+.post-detail-content .markdown-body li{
+    margin-bottom:8px;
+    color:rgba(255,255,255,0.9)
 }
 
 /* ---------- Post detail ---------- */
