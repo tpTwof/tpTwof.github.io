@@ -119,7 +119,7 @@ html,body{margin:0!important;padding:0!important;background-color:#f6f8fa!import
 .main-area{
     width:75%;
     min-height:100vh;
-    background:url('/images/back.jpg') center/cover no-repeat fixed;
+    background:#000 url('/images/back.jpg') center/contain no-repeat fixed;
     position:relative;
     box-shadow:0 0 20px rgba(0,0,0,0.05)
 }
