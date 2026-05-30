@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+*.tmp
+RULE.md
+YOUR.md
+DESIGN.md
+image.png
+.ai-temp/
