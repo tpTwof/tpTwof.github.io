@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
             '</div>' +
 
             // ╔══════════════════════════════════════════════════════════════════╗
-            // ║  【导航菜单】修改菜单项请在这里修改                             ║
+            // ║  【导航菜单】修改菜单项请在这里修改                               ║
             // ╚══════════════════════════════════════════════════════════════════╝
             '<nav class="sidebar-nav">' +
             // ── About Me 菜单项 ──
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
             '<div class="main-content-wrapper">' +
 
             // ╔══════════════════════════════════════════════════════════════════╗
-            // ║  【页面标题】每个页面的标题和副标题在 pageMeta 中配置            ║
+            // ║  【页面标题】每个页面的标题和副标题在 pageMeta 中配置             ║
             // ╚══════════════════════════════════════════════════════════════════╝
             '<div class="page-header">' +
             '<h1 class="page-title">About Me</h1>' +
@@ -74,8 +74,8 @@ document.addEventListener('DOMContentLoaded', function () {
             '</div>' +
 
             // ╔══════════════════════════════════════════════════════════════════╗
-            // ║  【About Me 区域】修改个人介绍请在这里修改                      ║
-            // ║  label="life" 的文章会自动显示在这个区域下方                    ║
+            // ║  【About Me 区域】修改个人介绍请在这里修改                        ║
+            // ║  label="life" 的文章会自动显示在这个区域下方                      ║
             // ╚══════════════════════════════════════════════════════════════════╝
             '<section id="about-section" class="content-section">' +
             '<div class="about-content">' +
@@ -83,13 +83,13 @@ document.addEventListener('DOMContentLoaded', function () {
             '</div></section>' +
 
             // ╔══════════════════════════════════════════════════════════════════╗
-            // ║  【Blog 区域】label="blog" 的文章会自动显示在这里              ║
+            // ║  【Blog 区域】label="blog" 的文章会自动显示在这里                 ║
             // ╚══════════════════════════════════════════════════════════════════╝
             '<section id="blog-section" class="content-section" style="display:none"></section>' +
 
             // ╔══════════════════════════════════════════════════════════════════╗
-            // ║  【Skills 区域】修改技能列表请在这里修改                        ║
-            // ║  直接修改下方的 skill-item 即可                                ║
+            // ║  【Skills 区域】修改技能列表请在这里修改                          ║
+            // ║  直接修改下方的 skill-item 即可                                   ║
             // ╚══════════════════════════════════════════════════════════════════╝
             '<section id="skills-section" class="content-section" style="display:none">' +
             '<div class="about-section"><h3>What I\'m good at</h3>' +
@@ -101,12 +101,12 @@ document.addEventListener('DOMContentLoaded', function () {
             '</div></div></section>' +
 
             // ╔══════════════════════════════════════════════════════════════════╗
-            // ║  【My Work 区域】label="works" 的文章会自动显示在这里          ║
+            // ║  【My Work 区域】label="works" 的文章会自动显示在这里             ║
             // ╚══════════════════════════════════════════════════════════════════╝
             '<section id="works-section" class="content-section" style="display:none"><div class="works-grid"></div></section>' +
 
             // ╔══════════════════════════════════════════════════════════════════╗
-            // ║  【Contact Me 区域】修改联系表单请在这里修改                    ║
+            // ║  【Contact Me 区域】修改联系表单请在这里修改                      ║
             // ╚══════════════════════════════════════════════════════════════════╝
             '<section id="contact-section" class="content-section" style="display:none">' +
             '<div class="contact-form">' +
@@ -138,9 +138,9 @@ document.addEventListener('DOMContentLoaded', function () {
     var currentPage = 'about';
 
     // ╔══════════════════════════════════════════════════════════════════╗
-    // ║  【页面标题配置】修改每个页面的标题和副标题请在这里修改          ║
-    // ║  title = 页面大标题                                             ║
-    // ║  intro = 页面副标题/描述                                        ║
+    // ║  【页面标题配置】修改每个页面的标题和副标题请在这里修改           ║
+    // ║  title = 页面大标题                                              ║
+    // ║  intro = 页面副标题/描述                                         ║
     // ╚══════════════════════════════════════════════════════════════════╝
     var pageMeta = {
         'about': {
@@ -271,9 +271,9 @@ document.addEventListener('DOMContentLoaded', function () {
     function renderSections(data) {
 
         // ╔══════════════════════════════════════════════════════════════════╗
-        // ║  【Label 映射配置】修改 Issue label 与页面板块的对应关系        ║
-        // ║  格式: 'label名称': '目标section的id前缀'                      ║
-        // ║  例如: 'life': 'about' 表示 label="life" 的文章显示在 About   ║
+        // ║  【Label 映射配置】修改 Issue label 与页面板块的对应关系          ║
+        // ║  格式: 'label名称': '目标section的id前缀'                         ║
+        // ║  例如: 'life': 'about' 表示 label="life" 的文章显示在 About       ║
         // ╚══════════════════════════════════════════════════════════════════╝
         var labelMap = { 'blog': 'blog', 'works': 'works', 'life': 'about' };
 
