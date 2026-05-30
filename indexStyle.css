@@ -128,7 +128,7 @@ html,body{margin:0!important;padding:0!important;background-color:#f6f8fa!import
     content:'';
     position:absolute;
     inset:0;
-    background:rgba(255,255,255,0.4);
+    background:rgba(0,0,0,0.5);
     z-index:0
 }
 
@@ -143,20 +143,20 @@ html,body{margin:0!important;padding:0!important;background-color:#f6f8fa!import
 
 .page-title{
     font-size:42px;font-weight:700;
-    color:#24292e!important;
+    color:#fff;
     margin:0 0 18px;
     letter-spacing:-.5px
 }
 
 .title-underline{
     width:50px;height:3px;
-    background:#a54a52;
+    background:rgba(255,255,255,0.5);
     margin:0 auto 22px
 }
 
 .page-intro{
     font-size:17px;
-    color:#57606a!important;
+    color:rgba(255,255,255,0.75);
     margin:0 auto;max-width:600px;
     line-height:1.7
 }
@@ -171,32 +171,32 @@ html,body{margin:0!important;padding:0!important;background-color:#f6f8fa!import
     display:block;background:#eee
 }
 .featured-card .card-caption{
-    color:#24292e!important;font-weight:600;
+    color:#fff;font-weight:600;
     font-size:18px;margin:14px 0 0
 }
 
 /* About content */
 .about-content{display:flex;flex-direction:column;gap:30px}
-.about-section{padding-bottom:24px;border-bottom:1px solid #eee}
+.about-section{padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,0.15)}
 .about-section:last-child{border-bottom:none;padding-bottom:0}
-.about-section h3{font-size:18px;font-weight:600;color:#24292e!important;margin:0 0 12px}
-.about-section p{font-size:15px;color:#57606a!important;line-height:1.75;margin:0}
+.about-section h3{font-size:18px;font-weight:600;color:#fff;margin:0 0 12px}
+.about-section p{font-size:15px;color:rgba(255,255,255,0.8);line-height:1.75;margin:0}
 
 /* ---------- Post list ---------- */
-.post-section .section-title{font-size:22px;font-weight:600;color:#24292e!important;margin:0 0 20px}
+.post-section .section-title{font-size:22px;font-weight:600;color:#fff;margin:0 0 20px}
 .post-section .SideNav{
     border-radius:8px;overflow:hidden;
-    background:#fff;
-    border:1px solid #e1e4e8
+    background:rgba(255,255,255,0.1);
+    border:1px solid rgba(255,255,255,0.15)
 }
 .post-section .SideNav-item{
     display:block;padding:16px 22px;
-    border-bottom:1px solid #e1e4e8;
+    border-bottom:1px solid rgba(255,255,255,0.1);
     transition:background .2s;text-decoration:none
 }
-.post-section .SideNav-item:hover{background:#f6f8fa;text-decoration:none}
-.post-item-content .listTitle{font-size:17px;font-weight:600;color:#24292e!important}
-.LabelTime{font-size:12px;color:#57606a!important}
+.post-section .SideNav-item:hover{background:rgba(255,255,255,0.15);text-decoration:none}
+.post-item-content .listTitle{font-size:17px;font-weight:600;color:#fff}
+.LabelTime{font-size:12px;color:rgba(255,255,255,0.65)}
 
 /* Skills grid */
 .skills-grid{
@@ -205,40 +205,41 @@ html,body{margin:0!important;padding:0!important;background-color:#f6f8fa!import
     gap:12px
 }
 .skill-item{
-    background:rgba(164,74,82,0.08);
+    background:rgba(255,255,255,0.1);
     padding:14px 18px;border-radius:6px;
     text-align:center;font-size:14px;
-    color:#a54a52;font-weight:500;
-    border:1px solid rgba(164,74,82,0.15);
+    color:#fff;font-weight:500;
+    border:1px solid rgba(255,255,255,0.2);
     transition:all .2s
 }
-.skill-item:hover{background:rgba(164,74,82,0.15)}
+.skill-item:hover{background:rgba(255,255,255,0.2)}
 
 /* ---------- Post detail ---------- */
 .back-btn{
     display:inline-flex;align-items:center;gap:6px;
     background:none;border:none;
-    color:#a54a52;font-size:15px;
+    color:rgba(255,255,255,0.8);font-size:15px;
     cursor:pointer;padding:0;
     margin-bottom:24px;
     transition:opacity .2s
 }
 .back-btn:hover{opacity:.7}
-.post-detail-content .markdown-body{color:#24292e!important}
+.post-detail-content .markdown-body{color:rgba(255,255,255,0.9)}
 .post-detail-content .markdown-body h1,
 .post-detail-content .markdown-body h2,
-.post-detail-content .markdown-body h3{color:#24292e!important}
-.post-loading{text-align:center;color:#57606a;padding:60px 0;font-size:16px}
-.post-error{text-align:center;color:#d73a4a;padding:40px 0}
+.post-detail-content .markdown-body h3{color:#fff}
+.post-detail-content .markdown-body a{color:#f0b0b6}
+.post-loading{text-align:center;color:rgba(255,255,255,0.6);padding:60px 0;font-size:16px}
+.post-error{text-align:center;color:#ff8a8a;padding:40px 0}
 
 /* ---------- Contact form ---------- */
 .contact-form{
     max-width:560px;
     margin:0 auto;
-    background:#f9fafb;
+    background:rgba(255,255,255,0.08);
     padding:40px;
     border-radius:12px;
-    border:1px solid #e5e7eb
+    border:1px solid rgba(255,255,255,0.15)
 }
 
 .form-group{margin-bottom:24px}
@@ -247,7 +248,7 @@ html,body{margin:0!important;padding:0!important;background-color:#f6f8fa!import
     display:block;
     font-size:13px;
     font-weight:600;
-    color:#374151;
+    color:rgba(255,255,255,0.85);
     margin-bottom:8px;
     letter-spacing:.3px
 }
