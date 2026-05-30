@@ -9,7 +9,7 @@
 
 html,body{margin:0!important;padding:0!important;background-color:#f6f8fa!important;width:100%!important}
 
-#content,.markdown-body{max-width:100vw!important;width:100vw!important;margin:0!important;padding:0!important;border:none!important;display:block!important;background:transparent!important;overflow:visible!important}
+#content{max-width:100vw!important;width:100vw!important;margin:0!important;padding:0!important;border:none!important;display:block!important;background:transparent!important;overflow:visible!important}
 
 /* ==================== Layout ==================== */
 .layout-wrapper{
@@ -215,6 +215,19 @@ html,body{margin:0!important;padding:0!important;background-color:#f6f8fa!import
 .skill-item:hover{background:rgba(255,255,255,0.2)}
 
 /* ---------- Markdown content overflow fix ---------- */
+.post-detail-content{
+    overflow:hidden;
+    max-width:100%
+}
+.post-detail-content .markdown-body{
+    max-width:100%;
+    overflow:hidden;
+    color:rgba(255,255,255,0.9)
+}
+.post-detail-content .markdown-body h1,
+.post-detail-content .markdown-body h2,
+.post-detail-content .markdown-body h3{color:#fff}
+.post-detail-content .markdown-body a{color:#f0b0b6}
 .post-detail-content .markdown-body pre{
     overflow-x:auto;
     max-width:100%;
@@ -236,7 +249,8 @@ html,body{margin:0!important;padding:0!important;background-color:#f6f8fa!import
 .post-detail-content .markdown-body hr{
     border:none;
     border-top:1px solid rgba(255,255,255,0.2);
-    margin:24px 0
+    margin:24px 0;
+    max-width:100%
 }
 
 /* ---------- Post detail ---------- */
@@ -249,11 +263,6 @@ html,body{margin:0!important;padding:0!important;background-color:#f6f8fa!import
     transition:opacity .2s
 }
 .back-btn:hover{opacity:.7}
-.post-detail-content .markdown-body{color:rgba(255,255,255,0.9)}
-.post-detail-content .markdown-body h1,
-.post-detail-content .markdown-body h2,
-.post-detail-content .markdown-body h3{color:#fff}
-.post-detail-content .markdown-body a{color:#f0b0b6}
 .post-loading{text-align:center;color:rgba(255,255,255,0.6);padding:60px 0;font-size:16px}
 .post-error{text-align:center;color:#ff8a8a;padding:40px 0}
 
