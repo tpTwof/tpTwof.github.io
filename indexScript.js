@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
         leftSidebar.className = 'left-sidebar';
         leftSidebar.innerHTML =
             '<div class="sidebar-header">' +
-            '<img src="https://github.githubassets.com/favicons/favicon.svg" alt="avatar" class="sidebar-avatar">' +
+            '<img src="https://tpTwof.github.io/image.png" alt="avatar" class="sidebar-avatar">' +
             '<h1 class="sidebar-title">tpTwof</h1>' +
             '<p class="sidebar-subtitle">Developer</p>' +
             '</div>' +

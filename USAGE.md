@@ -27,7 +27,7 @@
 
 发布作品展示：
 - Title: "我的第一个项目"
-- Labels: 选择 `work`
+- Labels: 选择 `works`
 
 ### 提交后
 
