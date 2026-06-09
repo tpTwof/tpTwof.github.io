@@ -237,7 +237,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     <span class="pl-k">int</span> n, m, p1, p2, val;
     cin &gt;&gt; n &gt;&gt; m;
 
-    vector&lt;vector&lt;<span class="pl-k">int</span>&gt;&gt; <span class="pl-c1">grid</span>(n + <span class="pl-c1">1</span>, vector&lt;<span class="pl-k">int</span>&gt;(n + <span class="pl-c1">1</span>, INT_MAX));
+    vector&lt;vector&lt;<span class="pl-k">int</span>&gt;&gt; <span class="pl-c1">grid</span>(n + <span class="pl-c1">1</span>, vector&lt;<span class="pl-k">int</span>&gt;(n + <span class="pl-c1">1</span>, <span class="pl-c1">INT_MAX</span>));
     <span class="pl-k">for</span>(<span class="pl-k">int</span> i = <span class="pl-c1">0</span>; i &lt; m; i++){
         cin &gt;&gt; p1 &gt;&gt; p2 &gt;&gt; val;
         grid[p1][p2] = val;
@@ -247,7 +247,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     <span class="pl-k">int</span> end = n;
 
     <span class="pl-c"><span class="pl-c">//</span> 存储从源点到每个节点的最短距离</span>
-    std::vector&lt;<span class="pl-k">int</span>&gt; <span class="pl-c1">minDist</span>(n + <span class="pl-c1">1</span>, INT_MAX);
+    std::vector&lt;<span class="pl-k">int</span>&gt; <span class="pl-c1">minDist</span>(n + <span class="pl-c1">1</span>, <span class="pl-c1">INT_MAX</span>);
 
     <span class="pl-c"><span class="pl-c">//</span> 记录顶点是否被访问过</span>
     std::vector&lt;<span class="pl-k">bool</span>&gt; <span class="pl-c1">visited</span>(n + <span class="pl-c1">1</span>, <span class="pl-c1">false</span>);
@@ -256,7 +256,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 
     <span class="pl-k">for</span> (<span class="pl-k">int</span> i = <span class="pl-c1">1</span>; i &lt;= n; i++) { <span class="pl-c"><span class="pl-c">//</span> 遍历所有节点</span>
 
-        <span class="pl-k">int</span> minVal = INT_MAX;
+        <span class="pl-k">int</span> minVal = <span class="pl-c1">INT_MAX</span>;
         <span class="pl-k">int</span> cur = <span class="pl-c1">1</span>;
 
         <span class="pl-c"><span class="pl-c">//</span> 1、选距离源点最近且未访问过的节点</span>
@@ -271,14 +271,14 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 
         <span class="pl-c"><span class="pl-c">//</span> 3、第三步，更新非访问节点到源点的距离（即更新minDist数组）</span>
         <span class="pl-k">for</span> (<span class="pl-k">int</span> v = <span class="pl-c1">1</span>; v &lt;= n; v++) {
-            <span class="pl-k">if</span> (!visited[v] &amp;&amp; grid[cur][v] != INT_MAX &amp;&amp; minDist[cur] + grid[cur][v] &lt; minDist[v]) {
+            <span class="pl-k">if</span> (!visited[v] &amp;&amp; grid[cur][v] != <span class="pl-c1">INT_MAX</span> &amp;&amp; minDist[cur] + grid[cur][v] &lt; minDist[v]) {
                 minDist[v] = minDist[cur] + grid[cur][v];
             }
         }
 
     }
 
-    <span class="pl-k">if</span> (minDist[end] == INT_MAX) cout &lt;&lt; -<span class="pl-c1">1</span> &lt;&lt; endl; <span class="pl-c"><span class="pl-c">//</span> 不能到达终点</span>
+    <span class="pl-k">if</span> (minDist[end] == <span class="pl-c1">INT_MAX</span>) cout &lt;&lt; -<span class="pl-c1">1</span> &lt;&lt; endl; <span class="pl-c"><span class="pl-c">//</span> 不能到达终点</span>
     <span class="pl-k">else</span> cout &lt;&lt; minDist[end] &lt;&lt; endl; <span class="pl-c"><span class="pl-c">//</span> 到达终点最短路径</span>
 
 }</pre></div>
@@ -297,7 +297,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     }
 
     <span class="pl-k">if</span> (uf.<span class="pl-smi">cc</span> &gt; <span class="pl-c1">1</span>) { <span class="pl-c"><span class="pl-c">//</span> 图不连通</span>
-        <span class="pl-k">return</span> LLONG_MAX;
+        <span class="pl-k">return</span> <span class="pl-c1">LLONG_MAX</span>;
     }
     <span class="pl-k">return</span> sum_wt;
 }
@@ -409,7 +409,7 @@ vector&lt;<span class="pl-k">int</span>&gt; <span class="pl-en">kmp</span>(<span
 <strong>BFS vs DFS</strong>：求最短步数用 BFS（带 <code class="notranslate">vis</code> 数组）；求连通块或路径用 DFS。</li>
 </ol>
 <h2>网格图DFS</h2>
-<div class="highlight highlight-source-c++"><pre class="notranslate"><span class="pl-k">constexpr</span> <span class="pl-k">int</span> DIRS[<span class="pl-c1">4</span>][<span class="pl-c1">2</span>] = {{<span class="pl-c1">0</span>, -<span class="pl-c1">1</span>}, {<span class="pl-c1">0</span>, <span class="pl-c1">1</span>}, {-<span class="pl-c1">1</span>, <span class="pl-c1">0</span>}, {<span class="pl-c1">1</span>, <span class="pl-c1">0</span>}}; <span class="pl-c"><span class="pl-c">//</span> 左右上下</span>
+<div class="highlight highlight-source-c++"><pre class="notranslate"><span class="pl-k">constexpr</span> <span class="pl-k">int</span> <span class="pl-c1">DIRS</span>[<span class="pl-c1">4</span>][<span class="pl-c1">2</span>] = {{<span class="pl-c1">0</span>, -<span class="pl-c1">1</span>}, {<span class="pl-c1">0</span>, <span class="pl-c1">1</span>}, {-<span class="pl-c1">1</span>, <span class="pl-c1">0</span>}, {<span class="pl-c1">1</span>, <span class="pl-c1">0</span>}}; <span class="pl-c"><span class="pl-c">//</span> 左右上下</span>
 
 <span class="pl-c"><span class="pl-c">//</span> 返回网格图 grid 每个连通块的大小</span>
 <span class="pl-c"><span class="pl-c">//</span> 时间复杂度 O(mn)</span>
@@ -421,7 +421,7 @@ vector&lt;<span class="pl-k">int</span>&gt; <span class="pl-en">dfsGrid</span>(v
     <span class="pl-k">auto</span> dfs = [&amp;](<span class="pl-c1">this</span> <span class="pl-k">auto</span>&amp;&amp; dfs, <span class="pl-k">int</span> i, <span class="pl-k">int</span> j) -&gt; <span class="pl-k">int</span> {
         vis[i][j] = <span class="pl-c1">true</span>;
         <span class="pl-k">int</span> size = <span class="pl-c1">1</span>;
-        <span class="pl-k">for</span> (<span class="pl-k">auto</span> [dx, dy] : DIRS) {
+        <span class="pl-k">for</span> (<span class="pl-k">auto</span> [dx, dy] : <span class="pl-c1">DIRS</span>) {
             <span class="pl-k">int</span> x = i + dx, y = j + dy;
             <span class="pl-c"><span class="pl-c">//</span> 这里 grid[x][y] == '.' 根据题意修改</span>
             <span class="pl-k">if</span> (<span class="pl-c1">0</span> &lt;= x &amp;&amp; x &lt; m &amp;&amp; <span class="pl-c1">0</span> &lt;= y &amp;&amp; y &lt; n &amp;&amp; grid[x][y] == <span class="pl-s"><span class="pl-pds">'</span>.<span class="pl-pds">'</span></span> &amp;&amp; !vis[x][y]) {
