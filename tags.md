@@ -18,72 +18,48 @@ title: "标签"
   padding: 10px 22px;
   border-radius: 25px;
   text-decoration: none;
-  color: #fff;
+  color: #555;
   font-size: 15px;
   font-weight: 500;
   letter-spacing: 0.5px;
   transition: all 0.3s ease;
   cursor: pointer;
   position: relative;
-  background: linear-gradient(145deg, #6a82fb, #4a6cf7);
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   box-shadow:
-    0 4px 6px rgba(74, 108, 247, 0.3),
-    0 8px 16px rgba(74, 108, 247, 0.2),
-    inset 0 2px 4px rgba(255, 255, 255, 0.25),
-    inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+    0 2px 8px rgba(0, 0, 0, 0.06),
+    0 4px 12px rgba(0, 0, 0, 0.04),
+    inset 0 1px 2px rgba(255, 255, 255, 0.8);
   transform: translateY(0);
-}
-
-.tag-bubble:nth-child(3n+1) {
-  background: linear-gradient(145deg, #f093fb, #d645e1);
-  box-shadow:
-    0 4px 6px rgba(214, 69, 225, 0.3),
-    0 8px 16px rgba(214, 69, 225, 0.2),
-    inset 0 2px 4px rgba(255, 255, 255, 0.25),
-    inset 0 -2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.tag-bubble:nth-child(3n+2) {
-  background: linear-gradient(145deg, #4facfe, #00c6fb);
-  box-shadow:
-    0 4px 6px rgba(0, 198, 251, 0.3),
-    0 8px 16px rgba(0, 198, 251, 0.2),
-    inset 0 2px 4px rgba(255, 255, 255, 0.25),
-    inset 0 -2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.tag-bubble:nth-child(3n) {
-  background: linear-gradient(145deg, #43e97b, #38c172);
-  box-shadow:
-    0 4px 6px rgba(56, 193, 114, 0.3),
-    0 8px 16px rgba(56, 193, 114, 0.2),
-    inset 0 2px 4px rgba(255, 255, 255, 0.25),
-    inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4px);
 }
 
 .tag-bubble:hover, .tag-bubble.active {
-  transform: translateY(-4px);
+  color: #333;
+  background: rgba(255, 255, 255, 0.85);
+  transform: translateY(-3px);
   box-shadow:
-    0 8px 12px rgba(0, 0, 0, 0.2),
-    0 16px 24px rgba(0, 0, 0, 0.15),
-    inset 0 2px 4px rgba(255, 255, 255, 0.3),
-    inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+    0 6px 16px rgba(0, 0, 0, 0.1),
+    0 10px 20px rgba(0, 0, 0, 0.06),
+    inset 0 1px 2px rgba(255, 255, 255, 0.9);
 }
 
 .tag-bubble:active {
   transform: translateY(1px);
   box-shadow:
-    0 2px 4px rgba(0, 0, 0, 0.2),
-    inset 0 2px 4px rgba(0, 0, 0, 0.15);
+    0 1px 4px rgba(0, 0, 0, 0.08),
+    inset 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
 .tag-count {
   display: inline-block;
   margin-left: 6px;
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(0, 0, 0, 0.06);
   border-radius: 12px;
   padding: 1px 8px;
   font-size: 13px;
+  color: #888;
 }
 
 .tags-empty {
@@ -112,13 +88,13 @@ title: "标签"
   display: inline-block;
   padding: 8px 24px;
   border-radius: 25px;
-  color: #fff;
-  background: linear-gradient(145deg, #6a82fb, #4a6cf7);
+  color: #555;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   box-shadow:
-    0 4px 6px rgba(74, 108, 247, 0.3),
-    0 8px 16px rgba(74, 108, 247, 0.2),
-    inset 0 2px 4px rgba(255, 255, 255, 0.25),
-    inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+    0 2px 8px rgba(0, 0, 0, 0.06),
+    0 4px 12px rgba(0, 0, 0, 0.04),
+    inset 0 1px 2px rgba(255, 255, 255, 0.8);
   font-size: 20px;
   margin: 0;
 }
@@ -129,7 +105,7 @@ title: "标签"
 }
 
 .tag-back a {
-  color: #4a6cf7;
+  color: #888;
   text-decoration: none;
   font-size: 14px;
   cursor: pointer;
@@ -164,7 +140,7 @@ title: "标签"
 }
 
 .tag-posts-list h3 a:hover {
-  color: #4a6cf7;
+  color: #555;
 }
 
 .tag-posts-list .date {
@@ -179,7 +155,7 @@ title: "标签"
 }
 
 .tag-posts-list .read-more {
-  color: #4a6cf7;
+  color: #888;
   text-decoration: none;
   font-size: 14px;
 }
