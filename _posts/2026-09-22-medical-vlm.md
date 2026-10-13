@@ -15,4 +15,4 @@ tags: [综述, 论文]
 
 ![医学VLM全景概览](/images/papers/medical-vlm-overview.png)
 
-> ⚠️ 请将 Obsidian 中的 `Pasted image 20260922205941.png` 复制到 `images/papers/medical-vlm-overview.png`
+

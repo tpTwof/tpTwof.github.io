@@ -27,4 +27,4 @@ AIPatient， 由大预言模型驱动的智能体构成的模拟患者系统。
 
 ![AIPatient多智能体Reasoning RAG工作流](/images/papers/alpatient-workflow.png)
 
-> ⚠️ 请将 Obsidian 中的 `Pasted image 20261002193353.png` 复制到 `images/papers/alpatient-workflow.png`
+
