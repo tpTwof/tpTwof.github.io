@@ -4,7 +4,7 @@ title: "AIPatient：基于多智能体Reasoning RAG的AI标准化病人系统"
 description: "利用LLM驱动的6个智能体与知识图谱，构建可模拟真实患者的AI标准化病人系统，EHR问答准确率达94.15%"
 keywords: AIPatient, LLM, RAG, 知识图谱, 医学教育, 智能体
 categories: [论文]
-tags: [AIPatient, LLM, RAG, 知识图谱, 医学教育, 智能体, 论文]
+tags: [综述, 论文]
 ---
 
 作者做了个叫 **AIPatient** 的"AI 标准化病人"：把 MIMIC-III 真实出院小结用 LLM 做 NER 抽成知识图谱（Neo4j），再用 **6 个 LLM 智能体 + Reasoning RAG**（带推理与自检的检索增强生成）来回答医学生的提问，并能按 32 种人格设定改变说话风格。结果：EHR 问答准确率 **94.15%**、知识库 F1 = **0.89**、可读性约美国 6 年级水平、与真人标准化病人（H-SP）对比"不劣甚至在情感真实感上更好"。
